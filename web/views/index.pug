@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .container
+    .row
+    h1= title
+    .row
+    p
+      | Shudu 舒讀為一個開源文字處理平台，目的是讓閱讀者能夠舒適的閱讀、編寫文案。
+      a(href='https://github.com/JackKuo-tw/shudu') 查看原始碼
+    .row
+    p
+      | 此專案特別感謝 
+      a(href='https://github.com/vinta/pangu.js') pangu.js
+      | 、
+      a(href='https://github.com/BYVoid/OpenCC') OpenCC
+      |  這兩個專案，沒有前輩們的貢獻不會有如此好用的工具。
+
+    p 目前僅支援轉換成繁體中文（台灣正體標準）
+    .row
+    form(action="", method="POST").form-inline
+        .col-md-8
+            textarea(name="origin",rows=10, cols=100).form-control=converted
+        .col-md-12
+            button(type='submit', value='submit', class='btn btn-info') 轉換
