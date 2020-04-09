@@ -1,0 +1,14 @@
+{
+  "name": "shudu",
+  "version": "1.0.0",
+  "description": "Read Chinese content in comfortable way.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "opencc": "^1.0.5"
+  }
+}
