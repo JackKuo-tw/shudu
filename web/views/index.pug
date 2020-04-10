@@ -7,11 +7,11 @@ block content
         .row
         p(class="p-3 mb-2 bg-success text-white")
           | 此網頁可以將「簡體字、中國用語」轉換成「繁體、台灣習慣用語」，
-          | 並且套用舒服的文案排版格式。（其他轉換開發中）
+          | 並且套用舒服的文案排版格式。（其他種轉換開發中）
         .row
-        form(action="", method="POST")
+        #convert
             .form-group
-                textarea(name="origin",rows=10, class="form-control").form-control=converted
+                textarea#origin(name="origin",rows=10, class="form-control").form-control=converted
             .form-group
                 button(type='submit', value='submit', class='btn btn-info form-control') 轉換
     hr
@@ -55,5 +55,5 @@ block content
                   | 歡迎參閱 
                   a(href='https://github.com/sparanoid/chinese-copywriting-guidelines') 中文文案排版指北
                 p
-                  a(href='https://github.com/jackkuo-tw/shudu') 查看 Shudu 原始碼
+                  a(href='https://github.com/jackkuo-tw/shudu') 檢視 Shudu 原始碼
 

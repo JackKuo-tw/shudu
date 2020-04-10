@@ -1,15 +1,18 @@
 {
-  "name": "shudu",
-  "version": "1.0.0",
-  "description": "Read Chinese content in comfortable way.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.17.1",
-    "opencc": "^1.0.5"
-  }
+    "name": "shudu",
+    "version": "1.0.0",
+    "description": "Read Chinese content in comfortable way.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "opencc": "^1.0.5"
+    },
+    "jshintConfig": {
+        "esversion": 6
+    }
 }
