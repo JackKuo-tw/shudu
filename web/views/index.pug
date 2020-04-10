@@ -2,24 +2,58 @@ extends layout
 
 block content
     .container
-    .row
-    h1= title
-    .row
-    p
-      | Shudu 舒讀為一個開源文字處理平台，目的是讓閱讀者能夠舒適的閱讀、編寫文案。
-      a(href='https://github.com/JackKuo-tw/shudu') 查看原始碼
-    .row
-    p
-      | 此專案特別感謝 
-      a(href='https://github.com/vinta/pangu.js') pangu.js
-      | 、
-      a(href='https://github.com/BYVoid/OpenCC') OpenCC
-      |  這兩個專案，沒有前輩們的貢獻不會有如此好用的工具。
+        .row
+        h1= title
+        .row
+        p(class="p-3 mb-2 bg-success text-white")
+          | 此網頁可以將「簡體字、中國用語」轉換成「繁體、台灣習慣用語」，
+          | 並且套用舒服的文案排版格式。（其他轉換開發中）
+        .row
+        form(action="", method="POST")
+            .form-group
+                textarea(name="origin",rows=10, class="form-control").form-control=converted
+            .form-group
+                button(type='submit', value='submit', class='btn btn-info form-control') 轉換
+    hr
+    .container
+        h3 範例
+        .row.alert.alert-info
+            .col-md-8
+                p 原文：
+                    b 鼠标在手,光标跟我走!
+                p 轉換：
+                    b 滑鼠在手，游標跟我走！
+            .col-md-8
+                ul
+                    li ❗️ 簡體 👉 繁體
+                    li ❗️ 中國用語 👉 台灣用語
+                    li ❗️ 半形標點 👉 全形標點
+        .row.alert.alert-warning
+            .col-md-8
+                p 原文：
+                    b 泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award
+                p 轉換：
+                    b 泰勒絲 (Taylor Swift) 在 20 歲時即拿到 Grammy Award
+            .col-md-8
+                ul
+                    li ❗️ 在標點、數字、英文前面加入空格
 
-    p 目前僅支援轉換成繁體中文（台灣正體標準）
-    .row
-    form(action="", method="POST").form-inline
-        .col-md-8
-            textarea(name="origin",rows=10, cols=100).form-control=converted
-        .col-md-12
-            button(type='submit', value='submit', class='btn btn-info') 轉換
+    .container
+        footer.page-footer.font-small.blue.pt-4
+          .container-fluid.text-center.text-md-left
+            .row
+              .col-md-12.mt-md-0.mt-3
+                p
+                  Shudu 舒讀為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、輕鬆編寫文案。
+                p
+                  | 此專案特別感謝 
+                  a(href='https://github.com/vinta/pangu.js') pangu.js
+                  | 、
+                  a(href='https://github.com/BYVoid/OpenCC') OpenCC
+                  |  這兩個專案，沒有前輩們的貢獻不會有此工具。
+                p 
+                  | 歡迎參閱 
+                  a(href='https://github.com/sparanoid/chinese-copywriting-guidelines') 中文文案排版指北
+                p
+                  a(href='https://github.com/jackkuo-tw/shudu') 查看 Shudu 原始碼
+
