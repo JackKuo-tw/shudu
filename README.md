@@ -26,5 +26,7 @@ $ node index.js "泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award"
 ## TODO
 
 - [x] Web GUI server
-- [ ] JSON server
+- [x] JSON server
+- [ ] Conversion Option
+- [ ] Docker
 - [ ] Browser Plugins
