@@ -1,13 +1,13 @@
-'use strict'
+'use strict';
 
-var pangu = require("./pangu");
-var OpenCC = require('opencc');
+const pangu = require("./pangu");
+const OpenCC = require('opencc');
 
 function getArgText() {
-    var args = process.argv;
+    const args = process.argv;
     if (args.length < 3) {
         console.log(`\nUsage: node index.js 需要轉換的字串`);
-        process.exit()
+        process.exit();
     } else {
         return args[2];
     }
@@ -23,5 +23,6 @@ function convertText(origin, conf='s2twp.json') {
     return converted;
 }
 
-exports.getArgText = getArgText;
-exports.convertText = convertText;
+module.exports = {
+    getArgText, convertText
+};

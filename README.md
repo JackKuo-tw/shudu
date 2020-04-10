@@ -16,15 +16,17 @@ $ node index.js 鼠标在手,光标跟我走!
 原始: 鼠标在手,光标跟我走!
 轉換: 滑鼠在手，游標跟我走！
 
-$ node index.js "科目:計算機編程(學士班)"
+$ node index.js "泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award"
 
-原始: 科目:計算機編程(學士班)
-轉換: 科目：計算機程式設計 (學士班)
+原始: 泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award
+轉換: 泰勒絲 (Taylor Swift) 在 20 歲時即拿到 Grammy Award
 ```
 
 
 ## TODO
 
-- [ ] Web GUI server
-- [ ] JSON server
+- [x] Web GUI server
+- [x] JSON server
+- [ ] Conversion Option
+- [ ] Docker
 - [ ] Browser Plugins
