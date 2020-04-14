@@ -3,7 +3,7 @@ extends layout
 block content
     .container
         .row
-        h1= title
+        h1= "Shudu 舒讀"
         .row
         p(class="p-3 mb-2 bg-success text-white")
           | 此網頁可以將「簡體字、中國用語」轉換成「繁體、台灣習慣用語」，
@@ -11,7 +11,7 @@ block content
         .row
         #convert
             .form-group
-                textarea#origin(name="origin",rows=10, class="form-control", placeholder=converted)
+                textarea#origin(name="origin",rows=10, class="form-control", placeholder="請輸入欲轉換之文字...")
             .form-group
                 button(type='submit', value='submit', class='btn btn-info form-control') 轉換
     hr

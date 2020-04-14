@@ -1,18 +1,31 @@
 {
     "name": "shudu",
     "version": "1.0.0",
-    "description": "Read Chinese content in comfortable way.",
+    "description": "Read & write Chinese content in comfortable way.",
+    "homepage": "https://github.com/JackKuo-tw/shudu#readme",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "cli": "node index.js",
+        "server": "node web/bin/www",
+        "start": "node web/bin/www",
+        "dev": "nodemon web/bin/www"
     },
-    "author": "",
+    "author": "JackKuo-tw",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JackKuo-tw/shudu.git"
+    },
     "dependencies": {
         "express": "^4.17.1",
         "opencc": "^1.0.5"
     },
     "jshintConfig": {
         "esversion": 6
+    },
+    "devDependencies": {
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.1.0",
+        "eslint-plugin-import": "^2.20.2"
     }
 }

@@ -1,22 +1,19 @@
-'use strict';
-
 const express = require('express');
-const router = express.Router();
-const shudu = require("../../src/shudu.js");
+const shudu = require('../../src/shudu.js');
 
-router.get('/', (req, res, next) => {
-    var converted = "請輸入欲轉換之文字...";
-    res.render('index', { title: 'Shudu 舒讀', converted: converted });
+const router = express.Router();
+router.get('/', (req, res) => {
+    res.render('index');
 });
 
-router.post('/json', (req, res, next) => {
+router.post('/json', (req, res) => {
     const origin = req.body.origin;
-    var converted = "";
+    let converted = '';
     // 限定長度不能超過 1 萬
-    if (origin !== undefined && origin.length >0 && origin.length < 10000) {
+    if (origin !== undefined && origin.length > 0 && origin.length < 10000) {
         converted = shudu.convertText(origin);
     }
-    res.json({converted: converted});
+    res.json({ converted });
 });
 
 module.exports = router;
