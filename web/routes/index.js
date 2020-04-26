@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
 router.post('/json', (req, res) => {
     const origin = req.body.origin;
     let converted = '';
-    // 限定長度不能超過 1 萬
-    if (origin !== undefined && origin.length > 0 && origin.length < 10000) {
+    // 限定長度不能超過 10 萬
+    if (origin !== undefined && origin.length > 0 && origin.length < 100000) {
         converted = shudu.convertText(origin);
     }
     res.json({ converted });
