@@ -13,6 +13,12 @@ block content
             .form-group
                 textarea#origin(name="origin",rows=10, class="form-control", placeholder="請輸入欲轉換之文字...")
             .form-group
+                label 標點符號：
+                select#punctuation(name="punctuation", class="form-control")
+                  option(value='fullWidth') 全形 (文案中使用)
+                  option(value='halfWidth') 半形 (UI 中使用，該功能尚未實作)
+                  option(value='default') 維持原樣
+            .form-group
                 button(type='submit', value='submit', class='btn btn-info form-control') 轉換
     hr
     .container
