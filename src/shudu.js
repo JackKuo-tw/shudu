@@ -11,11 +11,16 @@ function getArgText() {
     return args[2];
 }
 
-function punctuate(origin, category = 'fullWidth') {
+async function punctuate(origin, category = 'fullWidth') {
     // TODO: halfWidth
     let converted;
     if (category === 'fullWidth') {
-        converted = pangu.spacing(origin);
+        if (Array.isArray(origin)) {
+            converted = origin.map(s => pangu.spacing(s))
+        } else {
+            converted = pangu.spacing(origin);
+        }
+
     } else if (category === 'default') {
         converted = origin;
     } else if (category === 'halfWidth') {
@@ -24,14 +29,20 @@ function punctuate(origin, category = 'fullWidth') {
     return converted;
 }
 
-function convertText(origin, conf = 's2twp.json') {
+async function convertText(text, conf = 's2twp.json') {
     // TODO: add other config
     // Load the default Simplified to Traditional (Taiwan Standard) config
     const openccInst = new OpenCC(conf);
-    // Sync API
-    return openccInst.convertSync(origin);
+    if (Array.isArray(text)) {
+        converted = text.map(s => { return openccInst.convertPromise(s) });
+    } else {
+        converted = openccInst.convertPromise(text);
+    }
+    return converted;
 }
 
 module.exports = {
-    getArgText, convertText, punctuate,
+    getArgText,
+    convertText,
+    punctuate,
 };
