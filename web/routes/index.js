@@ -1,12 +1,13 @@
 const express = require('express');
 const shudu = require('../../src/shudu.js');
+const cors = require('cors')
 
 const router = express.Router();
 router.get('/', async(req, res) => {
     res.render('index');
 });
 
-router.post('/json', async(req, res) => {
+router.post('/json', cors(), async(req, res) => {
     const origin = req.body.origin;
     const punctuation = (req.body.punctuation === 'undefined') ? 'fullWidth' : req.body.punctuation;
     // 限定長度不能超過 10 萬
