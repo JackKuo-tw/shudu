@@ -1,5 +1,5 @@
 var virtualBody, mappingElement;
-var browser = browser || chrome
+var browser = chrome
 
 browser.runtime.onMessage.addListener(handler);
 
