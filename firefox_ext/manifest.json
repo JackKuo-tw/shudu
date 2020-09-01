@@ -1,0 +1,37 @@
+{
+
+    "manifest_version": 2,
+    "name": "Shudu",
+    "version": "1.0",
+    "description": "Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、編寫文案。",
+    "homepage_url": "https://github.com/jackkuo-tw/shudu",
+
+    "icons": {
+        "48": "icons/book.svg",
+        "96": "icons/book.svg"
+    },
+
+    "browser_action": {
+        "default_title": "Shudu"
+    },
+
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "exclude_matches": [
+            "*://docs.google.com/document/*"
+        ],
+        "js": ["shudu.js"],
+        "run_at": "document_end"
+    }],
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "tabs",
+        "activeTab"
+    ]
+}
