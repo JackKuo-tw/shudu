@@ -47,8 +47,8 @@ function parseHTML(htmlContent) {
     virtualBody = document.createElement('body');
     mappingElement = [];
     virtualBody.innerHTML = htmlContent;
-    treeWalker = document.createTreeWalker(virtualBody, 1 | 4, null, false);
-    stringArr = [];
+    const treeWalker = document.createTreeWalker(virtualBody, 1 | 4, null, false);
+    const stringArr = [];
     while (treeWalker.nextNode()) {
         const node = treeWalker.currentNode;
         switch (node.nodeName.toLowerCase()) {
@@ -66,7 +66,7 @@ function parseHTML(htmlContent) {
 }
 
 function replaceText(converted) {
-    treeWalker = document.createTreeWalker(virtualBody, 1 | 4, null, false);
+    const treeWalker = document.createTreeWalker(virtualBody, 1 | 4, null, false);
     while (treeWalker.nextNode()) {
         const node = treeWalker.currentNode;
         switch (node.nodeName.toLowerCase()) {
