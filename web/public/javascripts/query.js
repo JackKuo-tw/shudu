@@ -7,7 +7,7 @@ $(function() {
         const data = {
             'origin': getContent(),
             'punctuation': $('#punctuation').val(),
-            'format': 'html'
+            'translation': $('#translation').val(),
         };
         fetch("/json", {
                 method: 'POST',
@@ -80,9 +80,4 @@ function replaceText(converted) {
                 break;
         }
     }
-}
-
-function auto_grow(element) {
-    element.style.height = "5px";
-    element.style.height = (element.scrollHeight) + "px";
 }
