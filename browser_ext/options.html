@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./libs/materialize.min.css">
+    <link href="./libs/icon.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background-color: #F6F4F1;
+        }
+        
+        .container {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            padding: 30px;
+            padding-bottom: 250px;
+        }
+        
+        .section {
+            border: 0px solid grey;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        h3,
+        h4 {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .input-field {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="navbar center">
+            <div class="card-panel blue lighten-2">
+                <h3>舒讀設定</h3>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="center">
+                <div class="section">
+                    <h4>基本設定</h4>
+                    <form>
+                        <div class="input-field col s4">
+                            <select id="lang">
+                                <option value="zh-TW">繁體中文</option>
+                                <option value="zh">簡體中文</option>
+                            </select>
+                            <label>習慣語言</label>
+                        </div>
+
+                        <div class="input-field col s4">
+                            <select id="punctuation">
+                                <option value="fullWidth">舒適</option>
+                                <option value="default">維持原樣</option>
+                            </select>
+                            <label>標點符號</label>
+                        </div>
+
+                        <div class="input-field col s4">
+                            <div class="switch right-align">
+                                <label class="tooltipped" data-position="bottom" data-tooltip="您可以自行指定其他轉換伺服器來進行客製化，或是避免資安疑慮">自訂轉換伺服器：</label>
+                                <label>
+                                    Off
+                                    <input type="checkbox" id="custom-translation-server">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-field col s4" id="translation-server-div">
+                            <input type="url" id="custom-translation-server-URL" placeholder="https://example.com">
+                            <label>伺服器網址</label>
+                        </div>
+
+                        <div class="section">
+                            <h4>頁面自動轉換</h4>
+                            <div class="row custom-translation-url-div">
+                                <div class="row atu">
+                                    <div class="input-field col s11">
+                                        <input type="url" class="auto-translation-url" placeholder="https://example.com">
+
+                                        <label class="tooltipped" data-position="bottom" data-tooltip="假設為 https://aaa.com/ 則為其底下所有網頁如 https://aaa.com/bbb 都會自動轉換">需要自動轉換網址</label>
+                                    </div>
+                                    <div class="input-field col s1">
+                                        <button type="button" class="btn waves-effect waves-light red delete-ctud"><i class="material-icons">delete</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="add-auto-translation-url" class="btn btn-large waves-effect waves-light green"><i class="material-icons">add</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </main>
+
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/materialize.min.js"></script>
+    <script src="options.js"></script>
+</body>
+
+</html>

@@ -3,14 +3,35 @@ var browser = chrome
 
 browser.runtime.onMessage.addListener(handler);
 
+// 自動執行 shudu 判斷
+chrome.storage.sync.get({
+    autoTranslationURL: [],
+}, function(urls) {
+    const href = window.location.href;
+    if (urls.autoTranslationURL.some(item => href.includes(item))) {
+        handler('shudu it');
+    }
+})
+
 function handler(msg) {
     if (msg == 'shudu it') {
         console.log("receive 'shudu it'...");
-        browser.runtime.sendMessage({
-            'origin': getContent(),
-            'punctuation': 'fullWidth',
-            'format': 'html',
-        });
+        // 取得設定檔
+        chrome.storage.sync.get({
+            lang: 'zh-TW',
+            punctuation: 'fullWidth',
+            customTranslationServer: false,
+            customTranslationServerURL: '',
+            autoTranslationURL: [],
+        }, function(options) {
+            if (options.lang == 'zh') { options.lang = 'tw2sp'; } else { options.lang = 's2twp' }
+            // 交由 background 處理
+            browser.runtime.sendMessage({
+                'origin': getContent(),
+                'punctuation': options.punctuation,
+                'translation': options.lang,
+            });
+        })
     } else {
         setContent(msg);
     }

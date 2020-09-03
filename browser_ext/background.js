@@ -11,6 +11,7 @@ function handler(tab) {
 
 function sendText(data) {
     console.log('received data:', data);
+
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         const tab = tabs[0];
 
@@ -27,5 +28,4 @@ function sendText(data) {
                 browser.tabs.sendMessage(tab.id, resp);
             })
     });
-
 }

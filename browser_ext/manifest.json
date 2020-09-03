@@ -2,9 +2,16 @@
 
     "manifest_version": 2,
     "name": "Shudu 舒讀",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、編寫文案。",
-    "homepage_url": "https://github.com/jackkuo-tw/shudu",
+    "homepage_url": "https://shudu.jackkuo.org/",
+
+    "applications": {
+        "gecko": {
+            "id": "shudu@jackkuo.org",
+            "strict_min_version": "70.0"
+        }
+    },
 
     "icons": {
         "128": "icons/book_128.png"
@@ -27,10 +34,17 @@
         "scripts": ["background.js"]
     },
 
+    "options_page": "options.html",
+
+    "options_ui": {
+        "page": "options.html"
+    },
+
     "permissions": [
         "http://*/*",
         "https://*/*",
         "tabs",
-        "activeTab"
+        "activeTab",
+        "storage"
     ]
 }
