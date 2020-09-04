@@ -15,8 +15,8 @@ module.exports = {
         const origin = req.body.origin;
         const punctuation = (req.body.punctuation === 'undefined') ? 'fullWidth' : req.body.punctuation;
         let convertConf = selectConf(req.body.translation || 's2twp');
-        // 限定長度不能超過 10 萬
-        if (origin == undefined || origin.length <= 0 || origin.length > 100000) return res.json({});
+
+        if (origin == undefined || origin.length <= 0) return res.json({});
 
         if (Array.isArray(origin)) {
             shudu.convertText(origin, convertConf).then(converted => {

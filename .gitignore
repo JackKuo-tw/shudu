@@ -3,3 +3,4 @@
 .DS_Store
 *.zip
 manifest.json
+.env
