@@ -9,11 +9,10 @@ require('dotenv').config();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(express.json());
+app.use(express.json({ limit: (process.env.JSON_LIMIT || '2mb') }));
 app.use(express.urlencoded({ extended: false }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(cors());
-app.use(express.json({ limit: (process.env.JSON_LIMIT || '2mb') }));
 
 app.use('/', indexRouter);
 
@@ -33,4 +32,4 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-module.exports = app;
+module.exports = app
