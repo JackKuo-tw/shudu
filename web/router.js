@@ -8,6 +8,9 @@ const router = express.Router();
 // index
 router.get('/', index.index);
 
+// addon
+router.get('/addon', index.addon);
+
 // translate
 router.post('/json', cors(), translate.translate);
 

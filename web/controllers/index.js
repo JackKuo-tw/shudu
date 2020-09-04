@@ -4,4 +4,8 @@ module.exports = {
         res.render('index');
     },
 
+    async addon(req, res) {
+        res.render('addon');
+    },
+
 };

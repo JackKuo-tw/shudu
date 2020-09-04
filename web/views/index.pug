@@ -4,10 +4,13 @@ block content
     .container
         .row
         h1= "Shudu 舒讀"
+          a#addon(href='/addon', target="_blank" class='text badge badge-light float-right', style='color: #03a5fc;') 安裝擴充套件 
+            span.oi.oi-puzzle-piece 
         .row
         p(class="p-3 mb-2 bg-success text-white")
-          | 此網頁可以將「簡體字、中國用語」與「繁體、台灣習慣用語」互相轉換，
+          | 此網頁可以將「簡體字中國用語」與「繁體台灣用語」互相轉換，
           | 並且套用舒服的文案排版格式。（其他種轉換開發中...）
+
         .row
         #convert
             .form-group
@@ -27,6 +30,7 @@ block content
                 .form-group.col-sm-4
                     label 　
                     button(type='submit', value='submit', class='btn btn-info form-control') 轉換
+        hr
     br
     .container
         h3 範例

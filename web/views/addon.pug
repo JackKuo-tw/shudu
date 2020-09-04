@@ -1,0 +1,14 @@
+html
+    head
+        title="Shudu 舒讀"
+    body
+        div#detect
+            h3 偵測中...
+        div#not-support(style='display: none;')
+            h1 很抱歉，此附加元件目前不支援您的瀏覽器
+            p
+                | 可以試試：
+                a(href='https://github.com/vinta/pangu.js') Firefox 版本 
+                | 、
+                a(href='https://github.com/BYVoid/OpenCC') Chrome 版本
+        script(src='/public/javascripts/addon.js')
