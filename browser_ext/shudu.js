@@ -16,30 +16,41 @@ chrome.storage.sync.get({
 function handler(msg) {
     if (msg == 'shudu it') {
         console.log("receive 'shudu it'...");
-        // 取得設定檔
-        chrome.storage.sync.get({
-            lang: 'zh-TW',
-            punctuation: 'fullWidth',
-            customTranslationServer: false,
-            customTranslationServerURL: '',
-            autoTranslationURL: [],
-        }, function(options) {
-            if (options.lang == 'zh') { options.lang = 'tw2sp'; } else { options.lang = 's2twp' }
-            // 交由 background 處理
-            browser.runtime.sendMessage({
-                'origin': getContent(),
-                'punctuation': options.punctuation,
-                'translation': options.lang,
-            });
-        })
+        sendWebSource();
     } else {
-        setContent(msg);
+        if (msg.status == 'success') {
+            setContent(msg.resp);
+        } else if (msg.status == 'failure') {
+            alert('舒讀: 轉換失敗\n\n' + msg.resp);
+        }
     }
+}
+
+function sendWebSource() {
+    // 取得設定檔
+    chrome.storage.sync.get({
+        lang: 'zh-TW',
+        punctuation: 'fullWidth',
+        customTranslationServer: false,
+        customTranslationServerURL: '',
+        autoTranslationURL: [],
+    }, function(options) {
+        if (options.lang == 'zh') { options.lang = 'tw2sp'; } else { options.lang = 's2twp' }
+        // 交由 background 處理
+        browser.runtime.sendMessage({
+            server: (options.customTranslationServer && options.customTranslationServerURL) || null,
+            payload: {
+                origin: getContent(),
+                punctuation: options.punctuation,
+                translation: options.lang,
+            }
+        });
+    })
 }
 
 function getContent() {
     const parsed = parseHTML(document.body.innerHTML);
-    console.log(parsed);
+    console.log('parsed', parsed);
     return parsed;
 }
 
