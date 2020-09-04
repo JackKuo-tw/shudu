@@ -1,4 +1,4 @@
-console.info("background is running...");
+console.log(chrome.i18n.getMessage("background_running"))
 
 const browser = chrome
 const serverURL = "https://shudu.jackkuo.org/json";

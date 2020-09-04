@@ -1,0 +1,51 @@
+{
+    "background_running": {
+        "message": "background 正在运行中...",
+        "description": "Indicate the background script is running"
+    },
+    "manifest_description": {
+        "message": "Shudu 为一个开源文本处理平台，目的是让阅读者能够舒服的阅读、编写文案。"
+    },
+    "options_title": {
+        "message": "舒读设置"
+    },
+    "options_basic_setting": {
+        "message": "基本设置"
+    },
+    "options_traditional_chinese": {
+        "message": "繁体中文"
+    },
+    "options_simplified_chinese": {
+        "message": "简体中文"
+    },
+    "options_preferred_language": {
+        "message": "习惯语言"
+    },
+    "options_comfortable": {
+        "message": "舒适"
+    },
+    "options_the_same": {
+        "message": "维持原样"
+    },
+    "options_punctuation": {
+        "message": "标点符号"
+    },
+    "options_custom_server": {
+        "message": "自订转换服务器"
+    },
+    "options_custom_server_description": {
+        "message": "您可以自行指定其他转换服务器来进行客制化，或是避免资安疑虑"
+    },
+    "options_server_url": {
+        "message": "服务器网址"
+    },
+    "options_auto_translate": {
+        "message": "页面自动转换"
+    },
+    "options_needed_auto_tran_url": {
+        "message": "需要自动转换网址"
+    },
+    "options_needed_auto_tran_description": {
+        "message": "假设为 https://aaa.com/ 则为其底下所有网页如 https://aaa.com/bbb 都会自动转换"
+    }
+}

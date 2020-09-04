@@ -1,0 +1,51 @@
+{
+    "background_running": {
+        "message": "background 正在執行中...",
+        "description": "Indicate the background script is running"
+    },
+    "manifest_description": {
+        "message": "Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、編寫文案。"
+    },
+    "options_title": {
+        "message": "舒讀設定"
+    },
+    "options_basic_setting": {
+        "message": "基本設定"
+    },
+    "options_traditional_chinese": {
+        "message": "繁體中文"
+    },
+    "options_simplified_chinese": {
+        "message": "簡體中文"
+    },
+    "options_preferred_language": {
+        "message": "習慣語言"
+    },
+    "options_comfortable": {
+        "message": "舒適"
+    },
+    "options_the_same": {
+        "message": "維持原樣"
+    },
+    "options_punctuation": {
+        "message": "標點符號"
+    },
+    "options_custom_server": {
+        "message": "自訂轉換伺服器"
+    },
+    "options_custom_server_description": {
+        "message": "您可以自行指定其他轉換伺服器來進行客製化，或是避免資安疑慮"
+    },
+    "options_server_url": {
+        "message": "伺服器網址"
+    },
+    "options_auto_translate": {
+        "message": "頁面自動轉換"
+    },
+    "options_needed_auto_tran_url": {
+        "message": "需要自動轉換網址"
+    },
+    "options_needed_auto_tran_description": {
+        "message": "假設為 https://aaa.com/ 則為其底下所有網頁如 https://aaa.com/bbb 都會自動轉換"
+    }
+}

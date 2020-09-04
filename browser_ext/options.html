@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -45,34 +44,34 @@
     <main>
         <div class="navbar center">
             <div class="card-panel blue lighten-2">
-                <h3>舒讀設定</h3>
+                <h3>__MSG_options_title__</h3>
             </div>
         </div>
 
         <div class="container">
             <div class="center">
                 <div class="section">
-                    <h4>基本設定</h4>
+                    <h4>__MSG_options_basic_setting__</h4>
                     <form>
                         <div class="input-field col s4">
                             <select id="lang">
-                                <option value="zh-TW">繁體中文</option>
-                                <option value="zh">簡體中文</option>
+                                <option value="zh-TW">__MSG_options_traditional_chinese__</option>
+                                <option value="zh">__MSG_options_simplified_chinese__</option>
                             </select>
-                            <label>習慣語言</label>
+                            <label>__MSG_options_preferred_language__</label>
                         </div>
 
                         <div class="input-field col s4">
                             <select id="punctuation">
-                                <option value="fullWidth">舒適</option>
-                                <option value="default">維持原樣</option>
+                                <option value="fullWidth">__MSG_options_comfortable__</option>
+                                <option value="default">__MSG_options_the_same__</option>
                             </select>
-                            <label>標點符號</label>
+                            <label>__MSG_options_punctuation__</label>
                         </div>
 
                         <div class="input-field col s4">
                             <div class="switch right-align">
-                                <label class="tooltipped" data-position="bottom" data-tooltip="您可以自行指定其他轉換伺服器來進行客製化，或是避免資安疑慮">自訂轉換伺服器：</label>
+                                <label class="tooltipped" data-position="bottom" data-tooltip="__MSG_options_custom_server_description__">__MSG_options_custom_server__</label>
                                 <label>
                                     Off
                                     <input type="checkbox" id="custom-translation-server">
@@ -83,24 +82,24 @@
                         </div>
                         <div class="input-field col s4" id="translation-server-div">
                             <input type="url" id="custom-translation-server-URL" placeholder="https://example.com">
-                            <label>伺服器網址</label>
+                            <label>__MSG_options_server_url__</label>
                         </div>
 
                         <div class="section">
-                            <h4>頁面自動轉換</h4>
+                            <h4>__MSG_options_auto_translate__</h4>
                             <div class="row custom-translation-url-div">
                                 <div class="row atu">
-                                    <div class="input-field col s11">
+                                    <div class="input-field col s10">
                                         <input type="url" class="auto-translation-url" placeholder="https://example.com">
 
-                                        <label class="tooltipped" data-position="bottom" data-tooltip="假設為 https://aaa.com/ 則為其底下所有網頁如 https://aaa.com/bbb 都會自動轉換">需要自動轉換網址</label>
+                                        <label class="tooltipped" data-position="bottom" data-tooltip="__MSG_options_needed_auto_tran_description__">__MSG_options_needed_auto_tran_url__</label>
                                     </div>
                                     <div class="input-field col s1">
                                         <button type="button" class="btn waves-effect waves-light red delete-ctud"><i class="material-icons">delete</i></button>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" id="add-auto-translation-url" class="btn btn-large waves-effect waves-light green"><i class="material-icons">add</i></button>
+                            <button type="button" id="add-auto-translation-url" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></button>
                         </div>
                     </form>
                 </div>
