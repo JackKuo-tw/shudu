@@ -32,5 +32,6 @@ $ node index.js "泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award"
 - [ ] Conversion Option
 - [ ] Fix Some Wrong Conversions
 - [ ] Docker
+- [ ] Redis cache
 - [X] Firefox Addon
 - [X] Chrome Extension
