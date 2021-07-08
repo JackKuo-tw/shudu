@@ -21,7 +21,11 @@
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "opencc": "^1.1.1",
-        "pug": "^3.0.1"
+        "pug": "^3.0.1",
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "http-errors": "~1.6.3",
+        "morgan": "~1.9.1"
     },
     "jshintConfig": {
         "esversion": 6
