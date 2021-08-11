@@ -27,7 +27,7 @@ function loadOptions() {
     chrome.storage.sync.get({
         lang: 'zh-TW',
         punctuation: 'fullWidth',
-        customTranslationServer: false,
+        customTranslationServer: 'false',
         customTranslationServerURL: '',
         autoTranslationURL: [],
     }, function(items) {
@@ -40,7 +40,7 @@ function loadOptions() {
         $('#punctuation').formSelect();
 
         // 自訂轉換伺服器
-        $('#custom-translation-server')[0].checked = items.customTranslationServer;
+        $('#custom-translation-server')[0].checked = (items.customTranslationServer != "false");
         $("#custom-translation-server")[0].dispatchEvent(new Event('change'));
 
         $("#custom-translation-server-URL").val(items.customTranslationServerURL);
@@ -66,7 +66,7 @@ function saveOptions(e) {
     chrome.storage.sync.set({
         lang: $("#lang")[0].value,
         punctuation: $("#punctuation")[0].value,
-        customTranslationServer: $("#custom-translation-server")[0].checked,
+        customTranslationServer: ($("#custom-translation-server")[0].checked ? "true" : "false"),
         customTranslationServerURL: $("#custom-translation-server-URL")[0].value,
         autoTranslationURL: Array.from(autoURL),
     });

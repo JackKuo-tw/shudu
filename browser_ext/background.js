@@ -38,7 +38,7 @@ function sendText(msg) {
 // release notes
 const version = 1.3;
 chrome.storage.sync.get({
-    whats_new: undefined,
+    whats_new: 'v0',
 }, function(item) {
     if (item.whats_new !== version) {
         chrome.tabs.create({ url: "release_notes.html" });
