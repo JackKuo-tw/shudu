@@ -34,3 +34,14 @@ function sendText(msg) {
             })
     });
 }
+
+// release notes
+const version = 1.3;
+chrome.storage.sync.get({
+    whats_new: undefined,
+}, function(item) {
+    if (item.whats_new !== version) {
+        chrome.tabs.create({ url: "release_notes.html" });
+        chrome.storage.sync.set({ whats_new: version });
+    }
+});

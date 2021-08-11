@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>__MSG_release_notes__</title>
+    <link rel="stylesheet" href="./libs/materialize.min.css">
+    <link href="./libs/icon.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background-color: #F6F4F1;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .section {
+            border: 0px solid grey;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        h3,
+        h4 {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            margin-top: 40px;
+        }
+        
+        .input-field {
+            margin-top: 30px;
+        }
+        
+        li,
+        p {
+            font-size: 12.5pt;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer a {
+            font-size: 1.5rem;
+        }
+        
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="navbar center">
+            <div class="card-panel blue lighten-2">
+                <h3>__MSG_release_notes__</h3>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <h4>v1.3（當前版本）</h4>
+                    <p>更新了頁面解析演算法，解決了以往轉換完後部分按鈕無法點選、文字偏移問題，在轉換速度上也有大幅度的提升。</p>
+                    <div class="center">
+                        <img src="./shudu_intro.gif" style="size: 80%;">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <h4>v1.2</h4>
+                    <ol>
+                        <li>提供自定義伺服器網址</li>
+                        <li>使用 i18n 以更方便支援多國語言</li>
+                    </ol>
+                </div>
+
+                <div class="row">
+                    <h4>v1.1</h4>
+                    <p>提供基本設定（繁簡偏好、標點符號偏好，自動轉換網址）</p>
+                </div>
+
+                <div class="row">
+                    <h4>v1.0</h4>
+                    <p>Hello World</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col m3 offset-m2">
+                    <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">擴充套件、後端原始碼<i class="material-icons">code</i></a>
+                </div>
+                <div class="col m3">
+                    <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">Shudu 舒讀網站<i class="material-icons">pageview</i></a>
+                </div>
+                <div class="col m3">
+                    <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">Paypal 贊助主機與作者<i class="material-icons">payment</i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/materialize.min.js"></script>
+    <script src="options.js"></script>
+</body>
+
+</html>

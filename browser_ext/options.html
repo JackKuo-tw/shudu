@@ -3,19 +3,20 @@
 
 <head>
     <meta charset="utf-8">
+    <title>__MSG_shudu_settings__</title>
     <link rel="stylesheet" href="./libs/materialize.min.css">
     <link href="./libs/icon.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         body {
             background-color: #F6F4F1;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column
         }
         
-        .container {
-            margin-top: 10px;
-            margin-bottom: 30px;
-            padding: 30px;
-            padding-bottom: 250px;
+        main {
+            flex: 1 0 auto;
         }
         
         .section {
@@ -36,6 +37,10 @@
         
         .input-field {
             margin-top: 30px;
+        }
+        
+        footer a {
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -105,6 +110,25 @@
                 </div>
             </div>
     </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col m3">
+                    <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">擴充套件、後端原始碼<i class="material-icons">code</i></a>
+                </div>
+                <div class="col m3">
+                    <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">Shudu 舒讀網站<i class="material-icons">pageview</i></a>
+                </div>
+                <div class="col m3">
+                    <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">Paypal 贊助主機與作者<i class="material-icons">payment</i></a>
+                </div>
+                <div class="col m3">
+                    <a href="release_notes.html" target="_blank" rel="noopener">擴充套件介紹、版本資訊</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="./libs/jquery.min.js"></script>
     <script src="./libs/materialize.min.js"></script>

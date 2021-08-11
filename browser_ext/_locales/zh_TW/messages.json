@@ -47,5 +47,11 @@
     },
     "options_needed_auto_tran_description": {
         "message": "假設為 https://aaa.com/ 則為其底下所有網頁如 https://aaa.com/bbb 都會自動轉換"
+    },
+    "shudu_settings": {
+        "message": "舒讀設定"
+    },
+    "release_notes": {
+        "message": "舒讀版本資訊"
     }
 }

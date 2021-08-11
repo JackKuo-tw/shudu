@@ -47,5 +47,11 @@
     },
     "options_needed_auto_tran_description": {
         "message": "假设为 https://aaa.com/ 则为其底下所有网页如 https://aaa.com/bbb 都会自动转换"
+    },
+    "shudu_settings": {
+        "message": "舒读设置"
+    },
+    "release_notes": {
+        "message": "舒读 Shudu 版本信息"
     }
 }
