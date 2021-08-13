@@ -8,7 +8,26 @@ Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的�
 
 ## Installation
 
-`$ npm install`
+### From source code
+
+```bash
+npm install
+```
+
+### From Docker Hub
+
+x86_64 version
+
+```bash
+docker pull jackkuo/shudu
+docker run -it -d --name shudu -p 3000:3000 jackkuo/shudu
+```
+
+ARM version
+
+```bash
+# TODO
+```
 
 ## Usage
 
