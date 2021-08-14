@@ -16,17 +16,11 @@ npm install
 
 ### From Docker Hub
 
-x86_64 version
+Support x86_64, ARM, ARM64
 
 ```bash
 docker pull jackkuo/shudu
 docker run -it -d --name shudu -p 3000:3000 jackkuo/shudu
-```
-
-ARM version
-
-```bash
-# TODO
 ```
 
 ## Usage

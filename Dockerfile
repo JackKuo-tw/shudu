@@ -1,7 +1,7 @@
-FROM keymetrics/pm2:14-alpine AS builder
+FROM node:14-slim AS builder
 WORKDIR /root
-RUN apk add build-base
-RUN apk add python
+RUN apt-get update
+RUN apt install -y gcc g++ make python
 # Bundle APP files
 COPY . .
 # Install app dependencies
@@ -11,8 +11,10 @@ RUN npm install --production
 RUN ls -al -R
 
 
-FROM keymetrics/pm2:14-alpine AS executor
+FROM node:14-slim AS executor
 WORKDIR /root
+RUN npm install pm2 -g
 COPY --from=builder /root ./
 
+EXPOSE 3000
 CMD [ "pm2-runtime", "start", "pm2.json" ]
