@@ -1,7 +1,7 @@
 FROM node:14-slim AS builder
 WORKDIR /root
 RUN apt-get update
-RUN apt install -y gcc g++ make python
+RUN apt-get install -y gcc g++ make python
 # Bundle APP files
 COPY . .
 # Install app dependencies
