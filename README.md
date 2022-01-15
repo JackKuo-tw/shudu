@@ -37,6 +37,13 @@ $ node index.js "泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award"
 轉換: 泰勒絲 (Taylor Swift) 在 20 歲時即拿到 Grammy Award
 ```
 
+### go cli
+
+```bash
+$ echo 執行個體 | ./shudu --config tw2sp
+实例
+```
+
 
 ## TODO
 

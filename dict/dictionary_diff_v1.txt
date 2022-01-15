@@ -1,0 +1,103 @@
+diff --git a/dictionary/STPhrases.txt b/dictionary/STPhrases.txt
+index 5a57bdc..1fb9438 100644
+--- a/dictionary/STPhrases.txt
++++ b/dictionary/STPhrases.txt
+@@ -1,3 +1,4 @@
++实例	執行個體
+ 㓦划	㓦劃
+ 一丝不挂	一絲不掛
+ 一了心愿	一了心願
+@@ -49041,4 +49042,4 @@
+ 龚照胜	龔照勝
+ 龚胜	龔勝
+ 龟卜	龜卜
+-龟鉴	龜鑑
++龟鉴	龜鑑
+\ No newline at end of file
+diff --git a/dictionary/TSPhrases.txt b/dictionary/TSPhrases.txt
+index dee9754..567e41e 100644
+--- a/dictionary/TSPhrases.txt
++++ b/dictionary/TSPhrases.txt
+@@ -1,3 +1,4 @@
++執行個體	实例
+ 一目瞭然	一目了然
+ 上鍊	上链
+ 不瞭解	不了解
+@@ -273,4 +274,4 @@
+ 顧藉	顾借
+ 麼些族	麽些族
+ 黄鍾公	黄锺公
+-龍鍾	龙钟 龙锺
++龍鍾	龙钟 龙锺
+\ No newline at end of file
+diff --git a/dictionary/TWPhrases.txt b/dictionary/TWPhrases.txt
+index 36a3aa7..9c20327 100644
+--- a/dictionary/TWPhrases.txt
++++ b/dictionary/TWPhrases.txt
+@@ -1,3 +1,4 @@
++實例	執行個體
+ PN結	PN接面
+ SQL注入	SQL隱碼攻擊
+ SQL注入攻擊	SQL隱碼攻擊
+@@ -149,7 +150,6 @@ U盤	隨身碟
+ 宏內核	單核心
+ 寄存器	暫存器
+ 密鑰	金鑰
+-實例	例項 實例
+ 實模式	真實模式
+ 審覈	稽覈
+ 寫保護	防寫
+@@ -363,7 +363,7 @@ U盤	隨身碟
+ 縮略圖	縮圖
+ 縮進	縮排
+ 總線	匯流排
+-缺省	預設
++默認	預設
+ 老撾	寮國
+ 聖基茨和尼維斯	聖克里斯多福及尼維斯
+ 聖文森特和格林納丁斯	聖文森及格瑞那丁
+diff --git a/dictionary/TWPhrasesRev.txt b/dictionary/TWPhrasesRev.txt
+index ca599aa..4f62738 100644
+--- a/dictionary/TWPhrasesRev.txt
++++ b/dictionary/TWPhrasesRev.txt
+@@ -1,3 +1,4 @@
++執行個體	實例
+ PN接面	PN結
+ SQL隱碼攻擊	SQL注入 SQL注入攻擊
+ 三極體	三極管
+@@ -31,7 +32,6 @@ SQL隱碼攻擊	SQL注入 SQL注入攻擊
+ 使用者	用戶
+ 使用者名稱	用戶名
+ 來電轉駁	呼叫轉移
+-例項	實例
+ 信號	信號
+ 偵錯	調試
+ 偵錯程式	調試器
+@@ -149,7 +149,7 @@ SQL隱碼攻擊	SQL注入 SQL注入攻擊
+ 宕機	死機
+ 定址	尋址
+ 宣告	聲明
+-實例	實例
++執行個體	實例
+ 實體地址	物理地址
+ 實體記憶體	物理內存
+ 寬頻	寬帶
+@@ -496,7 +496,7 @@ SQL隱碼攻擊	SQL注入 SQL注入攻擊
+ 音訊	音頻
+ 頁尾	頁腳
+ 頁首	頁眉
+-預設	缺省 默認
++預設	默認
+ 預設值	默認值
+ 頻寬	帶寬
+ 類别範本	類模板
+diff --git a/dictionary/TWVariantsRev.txt b/dictionary/TWVariantsRev.txt
+index f225aa7..b4a7591 100644
+--- a/dictionary/TWVariantsRev.txt
++++ b/dictionary/TWVariantsRev.txt
+@@ -1,4 +1,4 @@
+-么	幺
++么	么
+ 偽	僞
+ 參	蔘
+ 吃	喫
