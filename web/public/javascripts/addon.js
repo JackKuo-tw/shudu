@@ -20,14 +20,14 @@ function detectBrowser() {
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 
     // Edge (based on chromium) detection
-    var isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
+    var isEdgeChromium = !!window.chrome && (navigator.userAgent.indexOf("Edg") != -1);
 
     // Blink engine detection
     var isBlink = (isChrome || isOpera) && !!window.CSS;
 
     if (isFirefox) {
         loading('https://addons.mozilla.org/zh-TW/firefox/addon/shudu/');
-    } else if (isChrome) {
+    } else if (isChrome || isEdgeChromium) {
         loading('https://chrome.google.com/webstore/detail/shudu-%E8%88%92%E8%AE%80/onbppgmmagapemlkoepbkcemidmgacpc');
     } else {
         document.getElementById('detect').style.display = 'none';
