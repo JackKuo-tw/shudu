@@ -3,18 +3,17 @@ module github.com/jackkuo-tw/shudu
 go 1.17
 
 require (
-	github.com/liuzl/goutil v0.0.0-20210628080224-310b49755b5f
+	fyne.io/fyne/v2 v2.3.1
+	github.com/flopp/go-findfont v0.1.0
+	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/longbridgeapp/opencc v0.1.0
 	github.com/vinta/pangu v3.0.0+incompatible
 )
 
 require (
-	fyne.io/fyne/v2 v2.3.1 // indirect
 	fyne.io/systray v1.10.1-0.20230207085535-4a244dbb9d03 // indirect
 	github.com/benoitkugler/textlayout v0.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/eknkc/basex v1.0.1 // indirect
-	github.com/flopp/go-findfont v0.1.0 // indirect
 	github.com/fredbi/uri v0.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/fyne-io/gl-js v0.0.0-20220119005834-d2da28d9ccfe // indirect
@@ -25,7 +24,6 @@ require (
 	github.com/go-text/typesetting v0.0.0-20221212183139-1eb938670a1f // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/goki/freetype v0.0.0-20220119013949-7a161fd3728c // indirect
-	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/jsummers/gobmp v0.0.0-20151104160322-e2ba15ffa76e // indirect
 	github.com/liuzl/cedar-go v0.0.0-20170805034717-80a9c64b256d // indirect
@@ -39,8 +37,8 @@ require (
 	golang.org/x/image v0.0.0-20220601225756-64ec528b34cd // indirect
 	golang.org/x/mobile v0.0.0-20211207041440-4e6c2922fdee // indirect
 	golang.org/x/net v0.0.0-20211118161319-6a13c67c3ce4 // indirect
-	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/text v0.3.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	honnef.co/go/js/dom v0.0.0-20210725211120-f030747120f2 // indirect
 )
