@@ -1,0 +1,8 @@
+Website = "https://shudu.jackkuo.org/"
+
+[Details]
+Icon = "Icon.png"
+Name = "Shudu"
+ID = "org.jackkuo.shudu.fyne"
+Version = "0.0.1"
+Build = 1
