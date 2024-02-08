@@ -12,13 +12,13 @@ $(function() {
         saveOptions();
     })
 
-    $("#custom-translation-server").change(function() {
-        if (this.checked) {
-            $("#translation-server-div").show();
-        } else {
-            $("#translation-server-div").hide();
-        }
-    })
+    // $("#custom-translation-server").change(function() {
+    //     if (this.checked) {
+    //         $("#translation-server-div").show();
+    //     } else {
+    //         $("#translation-server-div").hide();
+    //     }
+    // })
 
     loadOptions();
 })
@@ -27,8 +27,8 @@ function loadOptions() {
     chrome.storage.sync.get({
         lang: 'zh-TW',
         punctuation: 'fullWidth',
-        customTranslationServer: 'false',
-        customTranslationServerURL: '',
+        // customTranslationServer: 'false',
+        // customTranslationServerURL: '',
         autoTranslationURL: [],
     }, function(items) {
         // 習慣語言
@@ -40,10 +40,9 @@ function loadOptions() {
         $('#punctuation').formSelect();
 
         // 自訂轉換伺服器
-        $('#custom-translation-server')[0].checked = (items.customTranslationServer != "false");
-        $("#custom-translation-server")[0].dispatchEvent(new Event('change'));
-
-        $("#custom-translation-server-URL").val(items.customTranslationServerURL);
+        // $('#custom-translation-server')[0].checked = (items.customTranslationServer != "false");
+        // $("#custom-translation-server")[0].dispatchEvent(new Event('change'));
+        // $("#custom-translation-server-URL").val(items.customTranslationServerURL);
 
         // 頁面自動轉換
         items.autoTranslationURL.forEach((item) => {
@@ -63,13 +62,13 @@ function saveOptions(e) {
         if (item.value.trim().length > 0) autoURL.add(item.value)
     })
 
-    chrome.storage.sync.set({
-        lang: $("#lang")[0].value,
-        punctuation: $("#punctuation")[0].value,
-        customTranslationServer: ($("#custom-translation-server")[0].checked ? "true" : "false"),
-        customTranslationServerURL: $("#custom-translation-server-URL")[0].value,
-        autoTranslationURL: Array.from(autoURL),
-    });
+    // chrome.storage.sync.set({
+    //     lang: $("#lang")[0].value,
+    //     punctuation: $("#punctuation")[0].value,
+    //     customTranslationServer: ($("#custom-translation-server")[0].checked ? "true" : "false"),
+    //     customTranslationServerURL: $("#custom-translation-server-URL")[0].value,
+    //     autoTranslationURL: Array.from(autoURL),
+    // });
 }
 
 function newTranslationURL() {

@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Shudu 舒讀",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "description": "__MSG_manifest_description__",
     "homepage_url": "https://shudu.jackkuo.org/",
     "default_locale": "zh_TW",
@@ -24,7 +24,7 @@
     }],
 
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["wasm_exec.js", "shudu.wasm", "background.js"]
     },
 
     "options_page": "options.html",
@@ -35,5 +35,6 @@
         "tabs",
         "activeTab",
         "storage"
-    ]
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

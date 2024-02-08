@@ -43,14 +43,14 @@ function sendWebSource() {
     chrome.storage.sync.get({
         lang: 'zh-TW',
         punctuation: 'fullWidth',
-        customTranslationServer: false,
-        customTranslationServerURL: '',
+        // customTranslationServer: false,
+        // customTranslationServerURL: '',
         autoTranslationURL: [],
     }, function(options) {
         if (options.lang == 'zh') { options.lang = 'tw2sp'; } else { options.lang = 's2twp' }
         // 交由 background 處理
         browser.runtime.sendMessage({
-            server: (options.customTranslationServer && options.customTranslationServerURL) || null,
+            // server: (options.customTranslationServer && options.customTranslationServerURL) || null,
             payload: {
                 origin: unconverted,
                 punctuation: options.punctuation,
@@ -72,8 +72,8 @@ function getUnconvertedTextArray() {
 
 function setContent(msg) {
     unconverted.forEach((v, k) => {
-        conv_dict.set(v, msg.converted[k]);
-        conv_dict.set(msg.converted[k], msg.converted[k]);
+        conv_dict.set(v, msg[k]);
+        conv_dict.set(msg[k], msg[k]);
     });
     replaceText();
     unconverted = [];

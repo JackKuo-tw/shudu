@@ -1,7 +1,8 @@
 FIREFOX_VERSION := $(shell cat manifest-firefox.json | grep \"version\" | cut -d '"' -f4)
 CHROME_VERSION := $(shell cat manifest-chrome.json | grep \"version\" | cut -d '"' -f4)
 
-all: shudu_firefox.zip shudu_chrome.zip
+#all: shudu_firefox.zip shudu_chrome.zip
+all: shudu_chrome.zip
 
 shudu_firefox.zip:
 	cp manifest-firefox.json manifest.json
