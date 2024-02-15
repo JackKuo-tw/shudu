@@ -3,17 +3,17 @@ console.log(chrome.i18n.getMessage("background_running"))
 const browser = chrome
 // const serverURL = "https://shudu.jackkuo.org/json";
 
-browser.browserAction.onClicked.addListener(handler);
+// browser.browserAction.onClicked.addListener(handler);
+// function handler(tab) {
+//     browser.tabs.sendMessage(tab.id, 'shudu it');
+// }
+browser.action.onClicked.addListener(async (tab) => {
+    // const { name } = await chrome.storage.local.get(["name"]);
+    chrome.tabs.sendMessage(tab.id, 'shudu it');
+});
+  
 browser.runtime.onMessage.addListener(sendText);
 
-function handler(tab) {
-    browser.tabs.sendMessage(tab.id, 'shudu it');
-}
-
-const go = new Go();
-WebAssembly.instantiateStreaming(fetch("shudu.wasm"), go.importObject).then((result) => {
-    go.run(result.instance);
-});
 
 function convertText(text, config, isRefinePunc) {
     return window.convertText(text, config, isRefinePunc);
@@ -21,6 +21,13 @@ function convertText(text, config, isRefinePunc) {
 
 function sendText(msg) {
     // const server = msg.server || serverURL;
+
+    // importScripts("wasm_exec.js",);
+
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("shudu.wasm"), go.importObject).then((result) => {
+        go.run(result.instance);
+    });
 
     console.log('received data:', msg);
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
