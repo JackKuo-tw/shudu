@@ -212,32 +212,43 @@ function setContent(msg) {
     unconverted = [];
 };
 
-function traverse(parentNode, handler) {
-    for (let i in Object.keys(parentNode)) {
-        let curNode = parentNode[i];
-        if (!curNode) continue;
-        let curNodeName = curNode.nodeName; /* TODO: check if nodeName exists */
-        if (!curNodeName) continue;
+function traverse(nodes, handler) {
+    if (!nodes) return;
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (!node) continue;
 
-        // exclude "style, script"
-        if (curNodeName == 'STYLE' || curNodeName == 'SCRIPT') {
-            continue;
-        }
-        // if it's #text node, parse it
-        if (curNodeName == "#text") {
-            curNodeText = curNode.textContent;
-            handler(curNode, curNodeText);
-        }
-        // else if it has childNode, call traverse() recursively
-        else if (curNode.hasChildNodes()) {
-            traverse(curNode.childNodes, handler);
+        // nodeType 3 is Text node
+        if (node.nodeType === 3) {
+            handler(node, node.textContent);
+        } else if (node.nodeType === 1) { // nodeType 1 is Element node
+            const tagName = node.tagName.toUpperCase();
+            // exclude metadata and non-text elements
+            if (['STYLE', 'SCRIPT', 'NOSCRIPT', 'TEMPLATE', 'SVG', 'CANVAS', 'VIDEO', 'AUDIO', 'IFRAME', 'EMBED', 'OBJECT', 'MATH', 'HEAD'].includes(tagName)) {
+                continue;
+            }
+            if (node.childNodes && node.childNodes.length > 0) {
+                traverse(node.childNodes, handler);
+            }
+            // Shadow DOM support (only for open shadow roots)
+            if (node.shadowRoot && node.shadowRoot.childNodes) {
+                traverse(node.shadowRoot.childNodes, handler);
+            }
         }
     }
 }
 
 function parsePage() {
+    // Handle document title
+    if (document.title && isCJK(document.title)) {
+        if (!conv_dict.has(document.title)) {
+            conv_dict.set(document.title, undefined);
+        }
+    }
+
+    if (!document.body) return;
     traverse(document.body.childNodes, (curNode, curNodeText) => {
-        if (curNodeText.trim().length > 0 && isCJK(curNodeText)) {
+        if (curNodeText && curNodeText.trim().length > 0 && isCJK(curNodeText)) {
             if (!conv_dict.has(curNodeText)) {
                 conv_dict.set(curNodeText, undefined);
             }
@@ -246,14 +257,20 @@ function parsePage() {
 }
 
 function replaceText() {
+    // Handle document title
+    if (document.title && isCJK(document.title)) {
+        const converted = conv_dict.get(document.title);
+        if (converted !== undefined && converted !== document.title) {
+            document.title = converted;
+        }
+    }
+
+    if (!document.body) return;
     traverse(document.body.childNodes, (curNode, curNodeText) => {
-        if (curNodeText.trim().length > 0 && isCJK(curNodeText)) {
-            if (!conv_dict.has(curNodeText)) {
-                // Should not happen if parsePage ran
-                conv_dict.set(curNodeText, undefined);
-            } else {
+        if (curNodeText && curNodeText.trim().length > 0 && isCJK(curNodeText)) {
+            if (conv_dict.has(curNodeText)) {
                 const converted = conv_dict.get(curNodeText);
-                if (converted !== undefined) {
+                if (converted !== undefined && converted !== curNodeText) {
                     curNode.textContent = converted;
                 }
             }
@@ -262,8 +279,6 @@ function replaceText() {
 }
 
 function isCJK(text) {
-    REGEX_CHINESE = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]/;
-    hasChinese = text.match(REGEX_CHINESE);
-    if (hasChinese == null) return false;
-    return true;
+    const REGEX_CHINESE = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]/;
+    return REGEX_CHINESE.test(text);
 }

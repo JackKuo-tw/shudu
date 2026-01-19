@@ -24,7 +24,8 @@
                 "libs/pangu.js",
                 "libs/opencc/opencc.js"
             ],
-            "run_at": "document_end"
+            "run_at": "document_end",
+            "all_frames": true
         }
     ],
     "background": {
