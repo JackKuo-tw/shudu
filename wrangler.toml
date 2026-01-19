@@ -1,3 +1,5 @@
+name = "shudu"
+compatibility_date = "2026-01-19"
+
 [assets]
 directory = "web"
-compatibility_date = "2026-01-19"
