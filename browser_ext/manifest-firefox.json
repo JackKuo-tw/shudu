@@ -5,10 +5,15 @@
     "description": "Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、編寫文案。",
     "homepage_url": "https://shudu.jackkuo.org/",
     "default_locale": "zh_TW",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "{6eed3cfe-61f2-4057-a5e0-9898c1b668d8}",
-            "strict_min_version": "60.0"
+            "strict_min_version": "60.0",
+            "data_collection_permissions": {
+                "required": [
+                    "none"
+                ]
+            }
         }
     },
     "icons": {
