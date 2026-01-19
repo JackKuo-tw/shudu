@@ -5,10 +5,7 @@
     "homepage": "https://github.com/JackKuo-tw/shudu#readme",
     "main": "index.js",
     "scripts": {
-        "cli": "node index.js",
-        "server": "node web/bin/www",
-        "start": "node web/bin/www",
-        "dev": "nodemon web/bin/www"
+        "cli": "node index.js"
     },
     "author": "JackKuo-tw",
     "license": "MIT",
@@ -17,15 +14,7 @@
         "url": "https://github.com/JackKuo-tw/shudu.git"
     },
     "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^8.2.0",
-        "express": "^4.18.2",
-        "opencc": "^1.1.2",
-        "pug": "^3.0.1",
-        "cookie-parser": "~1.4.4",
-        "debug": "~2.6.9",
-        "http-errors": "~1.6.3",
-        "morgan": "~1.9.1"
+        "opencc": "^1.1.2"
     },
     "jshintConfig": {
         "esversion": 6

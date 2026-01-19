@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Shudu 舒讀",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "description": "Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、編寫文案。",
     "homepage_url": "https://shudu.jackkuo.org/",
     "default_locale": "zh_TW",
@@ -26,7 +26,9 @@
                 "*://docs.google.com/document/*"
             ],
             "js": [
-                "shudu.js"
+                "shudu.js",
+                "libs/pangu.js",
+                "libs/opencc/opencc.js"
             ],
             "run_at": "document_end"
         }
@@ -44,5 +46,8 @@
         "https://*/*",
         "activeTab",
         "storage"
+    ],
+    "web_accessible_resources": [
+        "libs/opencc/*"
     ]
 }

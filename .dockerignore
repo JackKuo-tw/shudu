@@ -1,6 +1,0 @@
-**/node_modules
-*.tar.gz
-*.tar
-*.zip
-browser_ext
-.DS_Store

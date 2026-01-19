@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Shudu 舒讀",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "description": "__MSG_manifest_description__",
     "homepage_url": "https://shudu.jackkuo.org/",
     "default_locale": "zh_TW",
@@ -20,7 +20,9 @@
                 "*://docs.google.com/document/*"
             ],
             "js": [
-                "shudu.js"
+                "shudu.js",
+                "libs/pangu.js",
+                "libs/opencc/opencc.js"
             ],
             "run_at": "document_end"
         }
@@ -28,6 +30,16 @@
     "background": {
         "service_worker": "background.js"
     },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "libs/opencc/*"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
     "options_page": "options.html",
     "permissions": [
         "activeTab",

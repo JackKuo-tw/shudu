@@ -30,15 +30,6 @@
     "options_punctuation": {
         "message": "標點符號"
     },
-    "options_custom_server": {
-        "message": "自訂轉換伺服器"
-    },
-    "options_custom_server_description": {
-        "message": "您可以自行指定其他轉換伺服器來進行客製化，或是避免資安疑慮"
-    },
-    "options_server_url": {
-        "message": "伺服器網址"
-    },
     "options_auto_translate": {
         "message": "頁面自動轉換"
     },
