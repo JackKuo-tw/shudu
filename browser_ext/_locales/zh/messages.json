@@ -53,5 +53,14 @@
     },
     "release_notes": {
         "message": "舒读 Shudu 版本信息"
+    },
+    "current_version": {
+        "message": "当前版本"
+    },
+    "welcome_title": {
+        "message": "欢迎使用舒读"
+    },
+    "get_started": {
+        "message": "开始使用"
     }
 }

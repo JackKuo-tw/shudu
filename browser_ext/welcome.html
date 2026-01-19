@@ -3,116 +3,200 @@
 
 <head>
     <meta charset="utf-8">
-    <title>__MSG_release_notes__</title>
-    <link rel="stylesheet" href="./libs/materialize.min.css">
-    <link href="./libs/icon.css" rel="stylesheet">
+    <title>__MSG_welcome_title__</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        body {
-            background-color: #F6F4F1;
+        :root {
+            --primary-color: #4a90e2;
+            --primary-light: #eef2ff;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        .section {
-            border: 0px solid grey;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        h3,
-        h4 {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-top: 40px;
-        }
-
-        .input-field {
-            margin-top: 30px;
-        }
-
-        li,
-        p {
-            font-size: 12.5pt;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             display: flex;
-            min-height: 100vh;
             flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
         }
 
         main {
-            flex: 1 0 auto;
+            padding: 40px 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), #818cf8);
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 16px rgba(74, 144, 226, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        p.description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(74, 144, 226, 0.5);
+            background: #357abd;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
         }
 
         footer a {
-            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
     <main>
-        <div class="navbar center">
-            <div class="card-panel blue lighten-2">
-                <h3>__MSG_release_notes__</h3>
+        <div class="hero-card">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
             </div>
-        </div>
+            <h1>__MSG_welcome_title__</h1>
+            <p class="description">__MSG_manifest_description__</p>
 
-        <div class="container">
-            <div class="section">
-                <div class="row">
-                    <h4>v1.4（當前版本）</h4>
-                    <p>使用 WebAssembly 重構，此後不再需要回傳任何資料到伺服器轉換，請安心使用。</p>
+            <div class="features">
+                <div class="feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    WebAssembly 離線轉換，保護隱私
                 </div>
-
-                <div class="row">
-                    <h4>v1.3</h4>
-                    <p>更新了頁面解析演算法，解決了以往轉換完後部分按鈕無法點選、文字偏移問題，在轉換速度上也有大幅度的提升。</p>
+                <div class="feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    智慧繁簡轉換與標點優化
                 </div>
-
-                <div class="row">
-                    <h4>v1.2</h4>
-                    <ol>
-                        <li>提供自定義伺服器網址</li>
-                        <li>使用 i18n 以更方便支援多國語言</li>
-                    </ol>
-                </div>
-
-                <div class="row">
-                    <h4>v1.1</h4>
-                    <p>提供基本設定（繁簡偏好、標點符號偏好，自動轉換網址）</p>
-                </div>
-
-                <div class="row">
-                    <h4>v1.0</h4>
-                    <p>Hello World</p>
+                <div class="feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    支援特定網站自動轉換
                 </div>
             </div>
+
+            <a href="options.html" class="btn">
+                __MSG_get_started__
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
         </div>
+
+        <footer>
+            <p>Need help? Visit our <a href="https://github.com/jackkuo-tw/shudu" target="_blank">GitHub</a></p>
+        </footer>
     </main>
 
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col m3">
-                    <a href="https://github.com/jackkuo-tw/shudu">擴充套件原始碼<i class="material-icons">code</i></a>
-                </div>
-                <div class="col m3 offset-m2">
-                    <a href="https://shudu.jackkuo.org">Shudu 舒讀網站<i class="material-icons">pageview</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="https://paypal.me/JackKuoTW">Paypal 贊助主機與作者<i class="material-icons">payment</i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./libs/jquery.min.js"></script>
-    <script src="./libs/materialize.min.js"></script>
     <script src="options.js"></script>
 </body>
 

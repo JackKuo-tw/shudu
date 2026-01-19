@@ -4,104 +4,373 @@
 <head>
     <meta charset="utf-8">
     <title>__MSG_shudu_settings__</title>
-    <link rel="stylesheet" href="./libs/materialize.min.css">
-    <link href="./libs/icon.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+        :root {
+            --primary-color: #4a90e2;
+            --primary-light: #eef2ff;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --danger-color: #ff4d4f;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #F6F4F1;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
-            flex-direction: column
         }
 
         main {
-            flex: 1 0 auto;
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .section {
-            border: 0px solid grey;
-            padding: 15px;
-            margin-top: 20px;
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        h3,
-        h4 {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
-        .input-field {
-            margin-top: 30px;
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        footer a {
-            font-size: 1.5rem;
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        select:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        /* Auto-translation list styles */
+        .atu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .atu-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #357abd;
+        }
+
+        .btn-danger {
+            background: transparent;
+            color: var(--danger-color);
+            padding: 8px;
+        }
+
+        .btn-danger:hover {
+            background: rgba(255, 77, 79, 0.1);
+        }
+
+        .btn-icon {
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        footer {
+            padding: 40px 20px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .help-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Tooltip simple implementation */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
         }
     </style>
 </head>
 
 <body>
     <main>
-        <div class="navbar center">
-            <div class="card-panel blue lighten-2">
-                <h3>__MSG_options_title__</h3>
-            </div>
+        <div class="header">
+            <h1>__MSG_options_title__</h1>
         </div>
 
-        <div class="container">
-            <div class="center">
-                <div class="section">
-                    <h4>__MSG_options_basic_setting__</h4>
-                    <form>
-                        <div class="input-field col s4">
-                            <select id="lang">
-                                <option value="zh-TW">__MSG_options_traditional_chinese__</option>
-                                <option value="zh">__MSG_options_simplified_chinese__</option>
-                            </select>
-                            <label>__MSG_options_preferred_language__</label>
-                        </div>
+        <div class="card">
+            <h2 class="section-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                __MSG_options_basic_setting__
+            </h2>
+            <form id="options-form">
+                <div class="form-group">
+                    <label for="lang">__MSG_options_preferred_language__</label>
+                    <select id="lang">
+                        <option value="zh-TW">__MSG_options_traditional_chinese__</option>
+                        <option value="zh">__MSG_options_simplified_chinese__</option>
+                    </select>
+                </div>
 
-                        <div class="input-field col s4">
-                            <select id="punctuation">
-                                <option value="fullWidth">__MSG_options_comfortable__</option>
-                                <option value="default">__MSG_options_the_same__</option>
-                            </select>
-                            <label>__MSG_options_punctuation__</label>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label for="punctuation">__MSG_options_punctuation__</label>
+                    <select id="punctuation">
+                        <option value="fullWidth">__MSG_options_comfortable__</option>
+                        <option value="default">__MSG_options_the_same__</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                __MSG_options_auto_translate__
+            </h2>
+            <p class="help-text" style="margin-bottom: 20px;">__MSG_options_needed_auto_tran_description__</p>
+
+            <div class="custom-translation-url-div atu-list">
+                <!-- Example of an atu item -->
+                <div class="atu-item atu" style="display: none;">
+                    <input type="text" class="auto-translation-url" placeholder="https://example.com/">
+                    <button class="btn btn-danger delete-ctud tooltip" data-tooltip="Delete">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>
+                    </button>
                 </div>
             </div>
+
+            <div style="margin-top: 20px;">
+                <button id="add-auto-translation-url" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add URL
+                </button>
+            </div>
+        </div>
     </main>
 
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col m3">
-                    <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">擴充套件、後端原始碼<i
-                            class="material-icons">code</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">Shudu 舒讀網站<i
-                            class="material-icons">pageview</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">PayPal 贊助主機與作者<i
-                            class="material-icons">payment</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="release_notes.html" target="_blank" rel="noopener">擴充套件介紹、版本資訊</a>
-                </div>
-            </div>
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+                Source Code
+            </a>
+            <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                </svg>
+                Shudu Site
+            </a>
+            <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                Donate
+            </a>
+            <a href="release_notes.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Release Notes
+            </a>
         </div>
     </footer>
 
-    <script src="./libs/jquery.min.js"></script>
-    <script src="./libs/materialize.min.js"></script>
     <script src="options.js"></script>
 </body>
 

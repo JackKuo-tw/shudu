@@ -4,124 +4,299 @@
 <head>
     <meta charset="utf-8">
     <title>__MSG_release_notes__</title>
-    <link rel="stylesheet" href="./libs/materialize.min.css">
-    <link href="./libs/icon.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+        :root {
+            --primary-color: #4a90e2;
+            --primary-light: #eef2ff;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #F6F4F1;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             display: flex;
-            min-height: 100vh;
             flex-direction: column;
-        }
-
-        .section {
-            border: 0px solid grey;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        h3,
-        h4 {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-top: 40px;
-        }
-
-        .input-field {
-            margin-top: 30px;
-        }
-
-        li,
-        p {
-            font-size: 12.5pt;
+            min-height: 100vh;
         }
 
         main {
-            flex: 1 0 auto;
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        footer a {
-            font-size: 1.5rem;
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .version-item {
+            margin-bottom: 32px;
+            position: relative;
+            padding-left: 24px;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .version-item:last-child {
+            margin-bottom: 0;
+            border-left-color: transparent;
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .version-tag {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .current-badge {
+            background: var(--primary-light);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .version-content {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .version-content p {
+            margin-bottom: 12px;
+        }
+
+        .version-content ol,
+        .version-content ul {
+            margin-left: 20px;
+        }
+
+        .version-content li {
+            margin-bottom: 8px;
+        }
+
+        .media-container {
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            justify-content: center;
         }
 
         img {
             max-width: 100%;
-            max-height: 100%;
+            height: auto;
+            display: block;
+        }
+
+        footer {
+            padding: 40px 20px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 
 <body>
     <main>
-        <div class="navbar center">
-            <div class="card-panel blue lighten-2">
-                <h3>__MSG_release_notes__</h3>
-            </div>
+        <a href="options.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            __MSG_shudu_settings__
+        </a>
+
+        <div class="header">
+            <h1>__MSG_release_notes__</h1>
         </div>
 
-        <div class="container">
-            <div class="section">
-                <div class="row">
-                    <h4>v1.4（當前版本）</h4>
+        <div class="card">
+            <div class="version-item">
+                <div class="version-header">
+                    <span class="version-tag">v1.4</span>
+                    <span class="current-badge">__MSG_current_version__</span>
+                </div>
+                <div class="version-content">
                     <p>使用 WebAssembly 重構，此後不再需要回傳任何資料到伺服器轉換，請安心使用。</p>
                 </div>
+            </div>
 
-                <div class="row">
-                    <h4>v1.3</h4>
+            <div class="version-item">
+                <div class="version-header">
+                    <span class="version-tag">v1.3</span>
+                </div>
+                <div class="version-content">
                     <p>更新了頁面解析演算法，解決了以往轉換完後部分按鈕無法點選、文字偏移問題，在轉換速度上也有大幅度的提升。</p>
-                    <div class="center">
-                        <img src="./shudu_intro.gif" style="size: 80%;">
+                    <div class="media-container">
+                        <img src="./shudu_intro.gif" alt="Shudu Demo">
                     </div>
                 </div>
+            </div>
 
-
-                <div class="row">
-                    <h4>v1.2</h4>
+            <div class="version-item">
+                <div class="version-header">
+                    <span class="version-tag">v1.2</span>
+                </div>
+                <div class="version-content">
                     <ol>
                         <li>提供自定義伺服器網址</li>
                         <li>使用 i18n 以更方便支援多國語言</li>
                     </ol>
                 </div>
+            </div>
 
-                <div class="row">
-                    <h4>v1.1</h4>
+            <div class="version-item">
+                <div class="version-header">
+                    <span class="version-tag">v1.1</span>
+                </div>
+                <div class="version-content">
                     <p>提供基本設定（繁簡偏好、標點符號偏好，自動轉換網址）</p>
                 </div>
+            </div>
 
-                <div class="row">
-                    <h4>v1.0</h4>
+            <div class="version-item">
+                <div class="version-header">
+                    <span class="version-tag">v1.0</span>
+                </div>
+                <div class="version-content">
                     <p>Hello World</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col m3 offset-m2">
-                    <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">擴充套件原始碼<i
-                            class="material-icons">code</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">Shudu 舒讀網站<i
-                            class="material-icons">pageview</i></a>
-                </div>
-                <div class="col m3">
-                    <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">PayPal 贊助主機與作者<i
-                            class="material-icons">payment</i></a>
-                </div>
-            </div>
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/jackkuo-tw/shudu" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+                Source Code
+            </a>
+            <a href="https://shudu.jackkuo.org" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                </svg>
+                Shudu Site
+            </a>
+            <a href="https://paypal.me/JackKuoTW" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                Donate
+            </a>
         </div>
     </footer>
 
-    <script src="./libs/jquery.min.js"></script>
-    <script src="./libs/materialize.min.js"></script>
     <script src="options.js"></script>
 </body>
 

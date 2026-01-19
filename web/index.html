@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Shudu 舒讀</title>
+    <title>Shudu 舒讀 - 繁簡轉換與文案排版</title>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNL8RVH47B"></script>
     <script>
@@ -14,115 +15,126 @@
         gtag('config', 'G-XNL8RVH47B');
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177543388-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-177543388-1');
-    </script>
-
     <link rel="icon" href="public/images/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css"
-        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row"></div>
-        <h1>Shudu 舒讀
-            <a id="addon" href="addon.html" target="_blank" class="text badge badge-light float-right"
-                style="color: #03a5fc;">安裝擴充套件
-                <span class="oi oi-puzzle-piece"></span>
+    <div class="main-container">
+        <header>
+            <h1>Shudu 舒讀</h1>
+            <a id="addon" href="addon.html" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                安裝擴充套件
             </a>
-        </h1>
-        <div class="row"></div>
-        <p class="p-3 mb-2 bg-success text-white">
-            此網頁可以將「簡體字中國用語」與「繁體台灣用語」互相轉換，
-            並且套用舒服的文案排版格式。（其他種轉換開發中...）
-        </p>
+        </header>
 
-        <div class="row"></div>
-        <div id="convert">
-            <div class="form-group">
-                <textarea id="origin" name="origin" rows="10" class="form-control"
-                    placeholder="請輸入欲轉換之文字..."></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-sm-4">
-                    <label>標點符號：</label>
-                    <select id="punctuation" name="punctuation" class="form-control">
-                        <option value="fullWidth">舒適</option>
-                        <option value="default">維持原樣</option>
-                    </select>
-                </div>
-                <div class="form-group col-sm-4">
-                    <label>轉換成：</label>
-                    <select id="translation" name="translation" class="form-control">
-                        <option value="s2twp">繁體台灣用語</option>
-                        <option value="tw2sp">簡體中國用語</option>
-                    </select>
-                </div>
-                <div class="form-group col-sm-4">
-                    <label>&nbsp;</label>
-                    <button type="submit" value="submit" class="btn btn-info form-control">轉換</button>
-                </div>
-            </div>
+        <div class="privacy-banner">
+            <svg style="vertical-align: middle; margin-right: 8px;" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            此網頁可以將「簡體字中國用語」與「繁體台灣用語」互相轉換，整個過程在瀏覽器內完成，不會回傳任何資料到伺服器。
         </div>
-        <hr>
-    </div>
-    <br>
-    <div class="container">
-        <h3>範例</h3>
-        <div class="row alert alert-info">
-            <div class="col-md-8">
-                <p>原文：<b>鼠标在手,光标跟我走!</b></p>
-                <p>轉換：<b>滑鼠在手，游標跟我走！</b></p>
-            </div>
-            <div class="col-md-8">
-                <ul>
-                    <li>❗️ 簡體 👉 繁體</li>
-                    <li>❗️ 中國用語 👉 台灣用語</li>
-                    <li>❗️ 半形標點 👉 全形標點</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row alert alert-warning">
-            <div class="col-md-8">
-                <p>原文：<b>泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award</b></p>
-                <p>轉換：<b>泰勒絲 (Taylor Swift) 在 20 歲時即拿到 Grammy Award</b></p>
-            </div>
-            <div class="col-md-8">
-                <ul>
-                    <li>❗️ 在標點、數字、英文前面加入空格</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <footer class="page-footer font-small blue pt-4">
-            <div class="container-fluid text-center text-md-left">
-                <div class="row">
-                    <div class="col-md-12 mt-md-0.mt-3">
-                        <p>Shudu 舒讀為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、輕鬆編寫文案。</p>
-                        <p>此專案特別感謝 <a href="https://github.com/vinta/pangu.js">pangu.js</a>、<a
-                                href="https://github.com/BYVoid/OpenCC">OpenCC</a> 這兩個專案，沒有前輩們的貢獻不會有此工具。</p>
-                        <p>歡迎參閱 <a href="https://github.com/sparanoid/chinese-copywriting-guidelines">中文文案排版指北</a></p>
-                        <p><a href="https://github.com/jackkuo-tw/shudu">檢視 Shudu 原始碼</a></p>
+        <div class="editor-card">
+            <div id="convert">
+                <div class="form-group">
+                    <textarea id="origin" name="origin" rows="12" placeholder="請輸入欲轉換之文字..."></textarea>
+                </div>
+
+                <div class="editor-toolbar">
+                    <div class="form-group">
+                        <label>標點符號優化</label>
+                        <select id="punctuation" name="punctuation">
+                            <option value="fullWidth">舒適使用全形</option>
+                            <option value="default">維持原樣</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>轉換目標</label>
+                        <select id="translation" name="translation">
+                            <option value="s2twp">繁體台灣用語</option>
+                            <option value="tw2sp">簡體中國用語</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button type="submit" class="btn-convert">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                            立即轉換
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <section class="examples-section">
+            <h2 class="examples-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                轉換範例
+            </h2>
+            <div class="example-grid">
+                <div class="example-card">
+                    <span class="example-tag tag-conversion">繁簡與術語轉換</span>
+                    <div class="example-content">
+                        <p>原文：<b>鼠标在手,光标跟我走!</b></p>
+                        <p>轉換：<b>滑鼠在手，游標跟我走！</b></p>
+                    </div>
+                    <ul class="example-list">
+                        <li>中港台用語自動修復</li>
+                        <li>標點符號全形化</li>
+                    </ul>
+                </div>
+                <div class="example-card">
+                    <span class="example-tag tag-spacing">文案排版優化</span>
+                    <div class="example-content">
+                        <p>原文：<b>泰勒絲(Taylor Swift)在20歲時即拿到Grammy Award</b></p>
+                        <p>轉換：<b>泰勒絲 (Taylor Swift) 在 20 歲時即拿到 Grammy Award</b></p>
+                    </div>
+                    <ul class="example-list">
+                        <li>中英混排自動加空格</li>
+                        <li>改善閱讀節奏</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>Shudu 舒讀為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、輕鬆編寫文案。</p>
+                <div class="footer-links">
+                    <a href="https://github.com/jackkuo-tw/shudu" target="_blank">GitHub 原始碼</a>
+                    <a href="https://github.com/vinta/pangu.js" target="_blank">pangu.js</a>
+                    <a href="https://github.com/BYVoid/OpenCC" target="_blank">OpenCC</a>
+                    <a href="https://github.com/LibreService/my_opencc" target="_blank">my_opencc</a>
+                </div>
+                <p style="margin-top: 24px; font-size: 0.8rem;">本工具受 <a
+                        href="https://github.com/sparanoid/chinese-copywriting-guidelines" target="_blank">中文文案排版指北</a>
+                    之啟發</p>
             </div>
         </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js"
-        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
-        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.12/tinymce.min.js"></script>
     <script src="public/javascripts/zh_TW.js"></script>
     <script src="public/javascripts/pangu.js"></script>

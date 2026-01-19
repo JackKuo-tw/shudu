@@ -3,22 +3,109 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Shudu 舒讀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shudu 舒讀 - 安裝擴充套件</title>
+    <link rel="stylesheet" href="public/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--primary-light);
+            border-bottom-color: var(--primary-color);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 24px;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-link {
+            padding: 12px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-link:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+    </style>
 </head>
 
 <body>
-    <div id="detect">
-        <h3>偵測中...</h3>
-    </div>
-    <div id="not-support" style="display: none;">
-        <h1>很抱歉，此附加元件目前不支援您的瀏覽器</h1>
-        <p>
-            可以試試：
-            <a href="https://addons.mozilla.org/zh-TW/firefox/addon/shudu/">Firefox 版本</a>、
-            <a
-                href="https://chrome.google.com/webstore/detail/shudu-%E8%88%92%E8%AE%80/onbppgmmagapemlkoepbkcemidmgacpc">Chrome
-                版本</a>
-        </p>
+    <div class="card">
+        <div id="detect">
+            <span class="loader"></span>
+            <h3>正在偵測瀏覽器...</h3>
+        </div>
+
+        <div id="not-support" style="display: none;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 24px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+            <h1>目前不支援您的瀏覽器</h1>
+            <p>很抱歉，此擴充套件目前不支援自動偵測您的瀏覽器。您可以手動安裝其他版本：</p>
+            <div class="links">
+                <a href="https://chrome.google.com/webstore/detail/shudu-%E8%88%92%E8%AE%80/onbppgmmagapemlkoepbkcemidmgacpc"
+                    class="btn-link">Chrome 平台檔案</a>
+                <a href="https://addons.mozilla.org/zh-TW/firefox/addon/shudu/" class="btn-link">Firefox 平台檔案</a>
+            </div>
+            <a href="index.html"
+                style="display: block; margin-top: 32px; font-size: 0.875rem; color: var(--primary-color); text-decoration: none;">返回首頁</a>
+        </div>
     </div>
     <script src="public/javascripts/addon.js"></script>
 </body>

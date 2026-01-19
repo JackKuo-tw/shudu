@@ -44,5 +44,14 @@
     },
     "release_notes": {
         "message": "舒讀版本資訊"
+    },
+    "current_version": {
+        "message": "當前版本"
+    },
+    "welcome_title": {
+        "message": "歡迎使用舒讀"
+    },
+    "get_started": {
+        "message": "開始使用"
     }
 }
