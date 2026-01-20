@@ -1,20 +1,20 @@
-console.log(chrome.i18n.getMessage("background_running"))
+const browserApi = (typeof browser !== 'undefined') ? browser : chrome;
+console.log(browserApi.i18n.getMessage("background_running"))
+const actionApi = (browserApi.action || browserApi.browserAction);
 
-const browser = chrome
-
-browser.action.onClicked.addListener(handler);
+actionApi.onClicked.addListener(handler);
 
 function handler(tab) {
-    browser.tabs.sendMessage(tab.id, 'shudu it');
+    browserApi.tabs.sendMessage(tab.id, 'shudu it');
 }
 
 // release notes
-const version = 1.3;
-chrome.storage.sync.get({
+const version = 1.4;
+browserApi.storage.sync.get({
     whats_new: 'v0',
 }, function (item) {
     if (item.whats_new !== version) {
-        chrome.tabs.create({ url: "release_notes.html" });
-        chrome.storage.sync.set({ whats_new: version });
+        browserApi.tabs.create({ url: "release_notes.html" });
+        browserApi.storage.sync.set({ whats_new: version });
     }
 });
