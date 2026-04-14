@@ -18,6 +18,17 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Build Browser Extension
+        run: |
+          cd browser_ext
+          make
+
+      - name: Upload Browser Extension Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-extensions
+          path: browser_ext/*.zip
+
       - name: Run Test
         run: |
           OUTPUT=$(node src/shudu.js "燕燕于飞，差池其羽。")
