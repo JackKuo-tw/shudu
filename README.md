@@ -34,5 +34,4 @@ $ echo 執行個體 | ./shudu --config tw2sp
 - [X] WebAssembly OpenCC
 - [ ] Conversion Option
 - [ ] Fix Some Wrong Conversions
-- [ ] Redis cache
 

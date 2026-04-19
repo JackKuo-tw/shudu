@@ -1,9 +1,30 @@
-var virtualBody, originalContent = { text: [], index: [] };;
+var virtualBody, originalContent = { text: [], index: [] };
+var quill;
 
 $(function () {
+    // Initialize Quill
+    quill = new Quill('#origin', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['link', 'clean']
+            ]
+        },
+        placeholder: '請輸入欲轉換之文字...'
+    });
+
     $('#convert button[type="submit"]').click(async function (e) {
         e.preventDefault();
-        tinyMCE.activeEditor.setProgressState(true);
+        const $btn = $(this);
+        const originalBtnText = $btn.html();
+        
+        // Set loading state
+        quill.enable(false);
+        $btn.prop('disabled', true).html('<svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> 轉換中...');
 
         const origin = getContent();
         const punctuation = $('#punctuation').val();
@@ -27,18 +48,12 @@ $(function () {
 
             setContent({ converted });
         } catch (err) {
-            console.error(err);
-            alert("轉換失敗");
+            console.error("[Conversion Error]", err);
+            alert("轉換失敗: " + (err.message || "未知錯誤"));
         } finally {
-            tinyMCE.activeEditor.setProgressState(false);
+            quill.enable(true);
+            $btn.prop('disabled', false).html(originalBtnText);
         }
-    });
-
-    tinymce.init({
-        selector: '#origin',
-        branding: false,
-        language: "zh_TW",
-        language_url: 'public/javascripts/zh_TW.js'
     });
 
     if (mobileCheck()) {
@@ -49,7 +64,8 @@ $(function () {
 
 function getContent() {
     const parsed = [];
-    originalContent.text = parseHTML(tinyMCE.activeEditor.getContent({ format: 'raw' }));
+    originalContent.index = [];
+    originalContent.text = parseHTML(quill.root.innerHTML);
     originalContent.text.forEach((text, index) => {
         if (ifCJK(text)) {
             parsed.push(text);
@@ -67,13 +83,14 @@ function setContent(msg) {
     });
     console.log('original', original);
     replaceText(original);
-    originalContent.index = originalContent.text = [];
-    tinyMCE.activeEditor.setContent(virtualBody.innerHTML, { format: 'html' });
+    originalContent.index = [];
+    originalContent.text = [];
+    quill.root.innerHTML = virtualBody.innerHTML;
 };
 
 function parseHTML(htmlContent) {
     virtualBody = document.createElement('body');
-    mappingElement = [];
+    const mappingElement = [];
     virtualBody.innerHTML = htmlContent;
     const treeWalker = document.createTreeWalker(virtualBody, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, null, false);
     const stringArr = [];

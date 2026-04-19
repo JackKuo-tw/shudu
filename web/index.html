@@ -16,6 +16,7 @@
     </script>
 
     <link rel="icon" href="public/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="public/stylesheets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +49,7 @@
         <div class="editor-card">
             <div id="convert">
                 <div class="form-group">
-                    <textarea id="origin" name="origin" rows="12" placeholder="請輸入欲轉換之文字..."></textarea>
+                    <div id="origin" style="height: 300px;"></div>
                 </div>
 
                 <div class="editor-toolbar">
@@ -135,7 +136,7 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.12/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="public/javascripts/zh_TW.js"></script>
     <script src="public/javascripts/pangu.js"></script>
     <script src="public/javascripts/shudu.js"></script>

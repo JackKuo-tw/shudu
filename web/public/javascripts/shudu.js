@@ -53,15 +53,20 @@ const dependencies = [
 ];
 
 async function loadDependencies() {
+    console.log("[Shudu] Loading dependencies...");
     for (const file of dependencies) {
         const url = 'public/libs/opencc/' + file;
         try {
             const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP ${response.status}: ${url}`);
+            if (!response.ok) {
+                console.error(`[Shudu] Failed to load ${file}: HTTP ${response.status} at ${url}`);
+                throw new Error(`HTTP ${response.status}: ${url}`);
+            }
             const data = await response.arrayBuffer();
             Module.FS.writeFile(file, new Uint8Array(data));
+            console.log(`[Shudu] Loaded ${file}`);
         } catch (e) {
-            console.error(`[Shudu] Failed to load ${file}:`, e);
+            console.error(`[Shudu] Error loading ${file}:`, e);
             throw e;
         }
     }

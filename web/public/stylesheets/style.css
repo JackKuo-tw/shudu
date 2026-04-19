@@ -262,11 +262,33 @@ footer {
     font-weight: 600;
 }
 
-/* TinyMCE customization overrides */
-.mce-tinymce {
-    border-radius: 12px !important;
+/* Quill customization overrides */
+.ql-toolbar.ql-snow {
+    border-radius: 12px 12px 0 0 !important;
     border: 1px solid var(--border-color) !important;
-    box-shadow: none !important;
+    background-color: #f8fafc;
+}
+
+.ql-container.ql-snow {
+    border-radius: 0 0 12px 12px !important;
+    border: 1px solid var(--border-color) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.ql-editor {
+    min-height: 300px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.ql-editor.ql-blank::before {
+    color: var(--text-muted);
+    font-style: normal;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 @media (max-width: 640px) {
