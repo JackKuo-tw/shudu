@@ -27,6 +27,25 @@ $ echo 執行個體 | ./shudu --config tw2sp
 实例
 ```
 
+## Development & Testing
+
+Shudu uses **Playwright** for E2E testing to ensure conversion accuracy and typography consistency.
+
+### Run all tests (Headless)
+```bash
+npm run test:e2e
+```
+
+### Run tests with UI Mode
+```bash
+npx playwright test --ui
+```
+
+### Run a specific test file
+```bash
+npx playwright test tests/conversion.test.ts
+```
+
 ## TODO
 
 - [X] Firefox Addon

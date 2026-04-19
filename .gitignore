@@ -257,3 +257,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,compression,vim,node
+
+# Playwright reports
+playwright-report/
+test-results/
+

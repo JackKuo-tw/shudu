@@ -5,7 +5,8 @@
     "homepage": "https://github.com/JackKuo-tw/shudu#readme",
     "main": "index.js",
     "scripts": {
-        "cli": "node index.js"
+        "cli": "node index.js",
+        "test:e2e": "playwright test"
     },
     "author": "JackKuo-tw",
     "license": "MIT",
@@ -20,8 +21,11 @@
         "esversion": 6
     },
     "devDependencies": {
+        "@playwright/test": "^1.59.1",
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.1.0",
-        "eslint-plugin-import": "^2.20.2"
+        "eslint-plugin-import": "^2.20.2",
+        "http-server": "^14.1.1",
+        "typescript": "^6.0.3"
     }
 }
