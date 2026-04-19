@@ -32,8 +32,7 @@
             ],
             "js": [
                 "shudu.js",
-                "libs/pangu.js",
-                "libs/opencc/opencc.js"
+                "libs/pangu.js"
             ],
             "run_at": "document_end",
             "all_frames": true
@@ -41,9 +40,11 @@
     ],
     "background": {
         "scripts": [
-            "background.js"
+            "background.js",
+            "libs/opencc/opencc.js"
         ]
     },
+    "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'",
     "options_ui": {
         "page": "options.html"
     },
