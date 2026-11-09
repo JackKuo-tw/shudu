@@ -2,7 +2,7 @@
 
 Shudu 為一個開源文字處理平台，目的是讓閱讀者能夠舒服的閱讀、輕鬆編寫文案。
 
-[網頁版](http://shudu.jackkuo.org/) 可以將「簡體字、中國用語」轉換成「繁體、台灣習慣用語」， 並且套用舒服的文案排版格式，所有過程都不會回傳任何資料，請安心使用。
+[網頁版](http://shudu.jackkuo.org/) 可以將「簡體字、中國用語」轉換成「繁體、台灣習慣用語」， 並且套用舒服的文案排版格式，所有過程都不會回傳任何資料，請安心使用。網頁版支援 PWA（Progressive Web App），可直接安裝至電腦或手機桌面並支援完全離線使用。
 
 此專案特別感謝 [pangu.js](https://github.com/vinta/pangu.js)、[OpenCC](https://github.com/BYVoid/OpenCC)、[my_opencc](https://github.com/LibreService/my_opencc) 這三個專案，沒有前輩們的貢獻不會有如此好用的工具。
 
@@ -51,6 +51,7 @@ npx playwright test tests/conversion.test.ts
 - [X] Firefox Addon
 - [X] Chrome Extension
 - [X] WebAssembly OpenCC
+- [X] PWA (可安裝到本地與離線支援)
 - [ ] Conversion Option
 - [ ] Fix Some Wrong Conversions
 

@@ -16,7 +16,15 @@
     </script>
 
     <link rel="icon" href="public/images/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <link rel="apple-touch-icon" href="public/images/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Shudu 舒讀">
+
+    <link href="public/libs/quill/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="public/stylesheets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,15 +35,26 @@
     <div class="main-container">
         <header>
             <h1>Shudu 舒讀</h1>
-            <a id="addon" href="addon.html" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="M2 17l10 5 10-5"></path>
-                    <path d="M2 12l10 5 10-5"></path>
-                </svg>
-                安裝擴充套件
-            </a>
+            <div class="header-actions">
+                <button id="install-btn" style="display: none;" title="安裝到電腦或手機">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    安裝應用程式
+                </button>
+                <a id="addon" href="addon.html" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    安裝擴充套件
+                </a>
+            </div>
         </header>
 
         <div class="privacy-banner">
@@ -135,13 +154,14 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="public/libs/jquery/jquery.min.js"></script>
+    <script src="public/libs/quill/quill.js"></script>
     <script src="public/javascripts/zh_TW.js"></script>
     <script src="public/javascripts/pangu.js"></script>
     <script src="public/javascripts/shudu.js"></script>
     <script src="public/libs/opencc/opencc.js"></script>
     <script src="public/javascripts/query.js"></script>
+    <script src="public/javascripts/pwa.js"></script>
 </body>
 
 </html>

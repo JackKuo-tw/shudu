@@ -56,6 +56,36 @@ header h1 {
     filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.1));
 }
 
+.header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#install-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white !important;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+}
+
+#install-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.08);
+}
+
 #addon {
     display: inline-flex;
     align-items: center;
@@ -66,6 +96,7 @@ header h1 {
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
+    font-size: 1rem;
     box-shadow: var(--shadow);
     transition: all 0.2s;
     border: 1px solid var(--border-color);
