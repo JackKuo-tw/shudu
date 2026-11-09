@@ -1,0 +1,6 @@
+{
+  "framework": "Playwright",
+  "language": "TypeScript",
+  "scope": "Core Conversion Flow",
+  "directory": "tests/e2e"
+}
