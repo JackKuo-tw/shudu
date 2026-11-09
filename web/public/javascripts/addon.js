@@ -1,37 +1,32 @@
-detectBrowser()
+detectBrowser();
 
 function detectBrowser() {
-    // Opera 8.0+
-    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    var userAgent = navigator.userAgent || '';
 
-    // Firefox 1.0+
-    var isFirefox = typeof InstallTrigger !== 'undefined';
+    // Firefox detection (desktop & mobile)
+    var isFirefox = /Firefox|FxiOS/i.test(userAgent);
 
-    // Safari 3.0+ "[object HTMLElementConstructor]" 
-    var isSafari = /constructor/i.test(window.HTMLElement) || (function(p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    // Edge (Chromium based or Legacy)
+    var isEdge = /Edg\//i.test(userAgent) || /Edge\//i.test(userAgent);
 
-    // Internet Explorer 6-11
-    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    // Opera
+    var isOpera = /OPR\//i.test(userAgent) || /Opera/i.test(userAgent) || (!!window.opr && !!opr.addons);
 
-    // Edge 20+
-    var isEdge = !isIE && !!window.StyleMedia;
+    // Chromium / Chrome (Google Chrome, Chromium, Brave, Vivaldi, Arc, etc.)
+    var isChromium = /Chrome|CriOS/i.test(userAgent);
 
-    // Chrome 1 - 79
-    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-
-    // Edge (based on chromium) detection
-    var isEdgeChromium = !!window.chrome && (navigator.userAgent.indexOf("Edg") != -1);
-
-    // Blink engine detection
-    var isBlink = (isChrome || isOpera) && !!window.CSS;
+    var CHROME_STORE_URL = 'https://chromewebstore.google.com/detail/shudu-%E8%88%92%E8%AE%80/onbppgmmagapemlkoepbkcemidmgacpc';
+    var FIREFOX_AMO_URL = 'https://addons.mozilla.org/zh-TW/firefox/addon/shudu/';
 
     if (isFirefox) {
-        loading('https://addons.mozilla.org/zh-TW/firefox/addon/shudu/');
-    } else if (isChrome || isEdgeChromium) {
-        loading('https://chrome.google.com/webstore/detail/shudu-%E8%88%92%E8%AE%80/onbppgmmagapemlkoepbkcemidmgacpc');
+        loading(FIREFOX_AMO_URL);
+    } else if (isChromium || isEdge || isOpera) {
+        loading(CHROME_STORE_URL);
     } else {
-        document.getElementById('detect').style.display = 'none';
-        document.getElementById('not-support').style.display = '';
+        var detectEl = document.getElementById('detect');
+        var notSupportEl = document.getElementById('not-support');
+        if (detectEl) detectEl.style.display = 'none';
+        if (notSupportEl) notSupportEl.style.display = '';
     }
 }
 

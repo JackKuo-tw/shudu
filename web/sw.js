@@ -12,6 +12,7 @@ const PRECACHE_ASSETS = [
   './public/javascripts/shudu.js',
   './public/javascripts/query.js',
   './public/javascripts/pwa.js',
+  './public/javascripts/addon.js',
   './public/libs/quill/quill.js',
   './public/libs/quill/quill.snow.css',
   './public/libs/jquery/jquery.min.js',
