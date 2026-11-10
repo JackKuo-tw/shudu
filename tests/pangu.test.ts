@@ -51,4 +51,64 @@ test.describe('Pangu Spacing', () => {
     result = await shudu.getEditorContent();
     expect(result.trim()).toBe(expected);
   });
+
+  test('should add space outside hyperlinks with Latin text (Issue #4)', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).quill.root.innerHTML = '<p>請參考<a href="https://example.com">Google</a>網站</p>';
+    });
+
+    await shudu.selectPunctuation('fullWidth');
+    await shudu.clickConvert();
+
+    const html = await page.evaluate(() => (window as any).quill.root.innerHTML);
+    expect(html).toContain('請參考 <a href="https://example.com">Google</a> 網站');
+  });
+
+  test('should add space outside hyperlinks ending in numbers (Issue #4)', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).quill.root.innerHTML = '<p>閱讀<a href="https://example.com">RFC 2616</a>規範</p>';
+    });
+
+    await shudu.selectPunctuation('fullWidth');
+    await shudu.clickConvert();
+
+    const html = await page.evaluate(() => (window as any).quill.root.innerHTML);
+    expect(html).toContain('閱讀 <a href="https://example.com">RFC 2616</a> 規範');
+  });
+
+  test('should add space around Chinese hyperlinks with surrounding Latin text (Issue #4)', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).quill.root.innerHTML = '<p>Visit<a href="https://example.com">谷歌</a>website</p>';
+    });
+
+    await shudu.selectPunctuation('fullWidth');
+    await shudu.clickConvert();
+
+    const html = await page.evaluate(() => (window as any).quill.root.innerHTML);
+    expect(html).toContain('Visit <a href="https://example.com">谷歌</a> website');
+  });
+
+  test('should add space around other inline tags like <strong> or <b>', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).quill.root.innerHTML = '<p>使用<strong>React</strong>開發</p>';
+    });
+
+    await shudu.selectPunctuation('fullWidth');
+    await shudu.clickConvert();
+
+    const html = await page.evaluate(() => (window as any).quill.root.innerHTML);
+    expect(html).toContain('使用 <strong>React</strong> 開發');
+  });
+
+  test('should not add space before fullwidth punctuation after hyperlink', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).quill.root.innerHTML = '<p>推薦使用<a href="https://example.com">Google</a>，查詢資料</p>';
+    });
+
+    await shudu.selectPunctuation('fullWidth');
+    await shudu.clickConvert();
+
+    const html = await page.evaluate(() => (window as any).quill.root.innerHTML);
+    expect(html).toContain('推薦使用 <a href="https://example.com">Google</a>，查詢資料');
+  });
 });

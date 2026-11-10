@@ -34,19 +34,10 @@ $(function () {
             // Wait for WASM to be ready
             await window.shudu.ready;
 
-            // Perform conversion
+            // Perform OpenCC conversion on CJK segments
             let converted = await window.shudu.convertText(origin, translation + '.json');
 
-            // Apply pangu spacing if requested
-            if (punctuation === 'fullWidth' && typeof pangu !== 'undefined') {
-                if (Array.isArray(converted)) {
-                    converted = converted.map(text => pangu.spacing(text));
-                } else {
-                    converted = pangu.spacing(converted);
-                }
-            }
-
-            setContent({ converted });
+            setContent({ converted, punctuation });
         } catch (err) {
             console.error("[Conversion Error]", err);
             alert("轉換失敗: " + (err.message || "未知錯誤"));
@@ -83,6 +74,12 @@ function setContent(msg) {
     });
     console.log('original', original);
     replaceText(original);
+
+    // Apply pangu spacing across DOM when punctuation is fullWidth
+    if (msg.punctuation === 'fullWidth' && typeof pangu !== 'undefined') {
+        formatDomSpacing(virtualBody);
+    }
+
     originalContent.index = [];
     originalContent.text = [];
     quill.root.innerHTML = virtualBody.innerHTML;
@@ -117,7 +114,7 @@ function replaceText(converted) {
         const node = treeWalker.currentNode;
         switch (node.nodeName.toLowerCase()) {
             case '#text':
-                node.textContent = spaceSurround(node, converted, index);
+                node.textContent = converted[index];
                 index += 1;
                 break;
             case 'option':
@@ -128,17 +125,89 @@ function replaceText(converted) {
     }
 }
 
-// 判斷前後是否加空格
-function spaceSurround(currentNode, converted, index) {
-    if (currentNode.parentNode.nodeName == 'A') {
-        if (converted[index].match(/[a-zA-Z]/) && ifCJK(converted[index - 1] || '')) {
-            converted[index] = ' ' + converted[index];
+// 格式化 DOM 樹中的文字與標籤邊界空格
+function formatDomSpacing(root) {
+    if (typeof pangu === 'undefined') return;
+
+    const blockTags = new Set(['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'BLOCKQUOTE', 'PRE', 'TD', 'TH', 'HR']);
+    const inlineTags = new Set(['A', 'B', 'STRONG', 'I', 'EM', 'U', 'S', 'STRIKE', 'CODE', 'SPAN', 'SUB', 'SUP']);
+
+    function getClosestBlock(node) {
+        let curr = node;
+        while (curr && curr !== root) {
+            if (blockTags.has(curr.nodeName)) return curr;
+            curr = curr.parentNode;
         }
-        if (converted[index].slice(-1).match(/[a-zA-Z]/) && ifCJK(converted[index + 1] || '')) {
-            converted[index] = converted[index] + ' ';
+        return root;
+    }
+
+    function getTopInlineAncestor(node, block) {
+        let curr = node.parentNode;
+        let topInline = null;
+        while (curr && curr !== block && curr !== root) {
+            if (inlineTags.has(curr.nodeName)) {
+                topInline = curr;
+            }
+            curr = curr.parentNode;
+        }
+        return topInline;
+    }
+
+    // 1. 先處理個別 text node 內部的排版加空格
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    const textNodes = [];
+    while (walker.nextNode()) {
+        const textNode = walker.currentNode;
+        if (textNode.textContent && textNode.textContent.length > 0) {
+            textNode.textContent = pangu.spacing(textNode.textContent);
+            textNodes.push(textNode);
         }
     }
-    return converted[index];
+
+    // 2. 處理同一個 block 內跨標籤（例如 <a>, <strong> 等行內標籤）邊界的加空格
+    for (let i = 0; i < textNodes.length - 1; i++) {
+        const nodeA = textNodes[i];
+        const nodeB = textNodes[i + 1];
+
+        const blockA = getClosestBlock(nodeA);
+        const blockB = getClosestBlock(nodeB);
+        if (blockA !== blockB) {
+            continue;
+        }
+
+        const textA = nodeA.textContent;
+        const textB = nodeB.textContent;
+        if (!textA || !textB) continue;
+
+        const charA = textA.slice(-1);
+        const charB = textB.charAt(0);
+
+        // 任一端已有空格或空白則跳過
+        if (/\s/.test(charA) || /\s/.test(charB)) continue;
+
+        const testStr = charA + charB;
+        const spaced = pangu.spacing(testStr);
+
+        if (spaced !== testStr) {
+            const inlineA = getTopInlineAncestor(nodeA, blockA);
+            const inlineB = getTopInlineAncestor(nodeB, blockB);
+
+            if (inlineA && inlineB && inlineA !== inlineB) {
+                // 兩側屬於不同行內標籤：在兩標籤中間插入文字空格節點
+                const spaceNode = document.createTextNode(' ');
+                inlineB.parentNode.insertBefore(spaceNode, inlineB);
+            } else if (inlineB) {
+                // nodeB 位於行內標籤中（例如 <a>）：將空格加在標籤外部（nodeA 結尾）
+                nodeA.textContent = nodeA.textContent + ' ';
+            } else if (inlineA) {
+                // nodeA 位於行內標籤中（例如 <a>）：將空格加在標籤外部（nodeB 開頭）
+                nodeB.textContent = ' ' + nodeB.textContent;
+            } else {
+                // 一般純文字節點間
+                nodeA.textContent = nodeA.textContent + ' ';
+            }
+        }
+    }
 }
 
 function ifCJK(text) {
